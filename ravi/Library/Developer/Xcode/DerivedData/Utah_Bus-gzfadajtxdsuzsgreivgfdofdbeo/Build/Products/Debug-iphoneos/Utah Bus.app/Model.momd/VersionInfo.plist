@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSManagedObjectModel_CurrentVersionName</key>
+	<string>Model</string>
+	<key>NSManagedObjectModel_VersionHashes</key>
+	<dict>
+		<key>Model</key>
+		<dict>
+			<key>Routes</key>
+			<data>
+			tK/nCBrYkY6mIgJEHNdBC9TrJWUxD+X3Ff34QnNEjAA=
+			</data>
+			<key>Shapes</key>
+			<data>
+			AC4FRVdYorLrf4WSclaCA+A9CBnRLwvdORe0YuYD84w=
+			</data>
+			<key>Stops</key>
+			<data>
+			wC04gaAWvLLO7goUhfj0L5xtbCOwuByrLCUqRfT7asU=
+			</data>
+			<key>Trips</key>
+			<data>
+			6O96L14frA3HtWopaZYToWC9PKjeEnF2z66RTLTgIn8=
+			</data>
+		</dict>
+	</dict>
+</dict>
+</plist>

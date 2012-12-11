@@ -1,0 +1,508 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		072D5235160194CD00902D9E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 072D5234160194CD00902D9E /* Default-568h@2x.png */; };
+		0735E3D015D9CB6400BBEE9E /* UTAStopMonitoringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0735E3CF15D9CB6400BBEE9E /* UTAStopMonitoringViewController.m */; };
+		0735E3D315D9D1A100BBEE9E /* Salt Lake City.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 0735E3D215D9D1A100BBEE9E /* Salt Lake City.gpx */; };
+		0735E3D615DA147200BBEE9E /* StopMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0735E3D515DA147200BBEE9E /* StopMapViewController.m */; };
+		0735E3D915DB09FE00BBEE9E /* StopInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0735E3D815DB09FE00BBEE9E /* StopInfoTableViewController.m */; };
+		0736D08815EC094400515506 /* UTAGTFS.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0736D08715EC094400515506 /* UTAGTFS.sqlite */; };
+		073BC80D15EBFFB4002A9519 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 073BC80B15EBFFB4002A9519 /* Model.xcdatamodeld */; };
+		0740D84515D027C90075A32C /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0740D84415D027C90075A32C /* MapViewController.m */; };
+		0740D84915D053B30075A32C /* LocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0740D84815D053B30075A32C /* LocationAnnotation.m */; };
+		0748138315E2C92B00B21829 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0748138215E2C92B00B21829 /* SystemConfiguration.framework */; };
+		0748138915E2C9F600B21829 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0748138815E2C9F600B21829 /* Reachability.m */; };
+		0748139315E308D700B21829 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0748138F15E308D700B21829 /* default.png */; };
+		0748139415E308D700B21829 /* default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0748139015E308D700B21829 /* default@2x.png */; };
+		0748139515E308D700B21829 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0748139115E308D700B21829 /* icon.png */; };
+		0748139615E308D700B21829 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0748139215E308D700B21829 /* icon@2x.png */; };
+		0748139915E4072300B21829 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0748139815E4072300B21829 /* HelpViewController.m */; };
+		0748139B15E415CD00B21829 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 0748139A15E415CD00B21829 /* help.html */; };
+		074813B715E41E6600B21829 /* closest@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 074813AF15E41E6600B21829 /* closest@2x.png */; };
+		074813B815E41E6600B21829 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 074813B015E41E6600B21829 /* help.png */; };
+		074813B915E41E6600B21829 /* route@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 074813B115E41E6600B21829 /* route@2x.png */; };
+		074813BA15E41E6600B21829 /* favorites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 074813B215E41E6600B21829 /* favorites@2x.png */; };
+		074813BB15E41E6600B21829 /* favorites.png in Resources */ = {isa = PBXBuildFile; fileRef = 074813B315E41E6600B21829 /* favorites.png */; };
+		074813BC15E41E6600B21829 /* closest.png in Resources */ = {isa = PBXBuildFile; fileRef = 074813B415E41E6600B21829 /* closest.png */; };
+		074813BD15E41E6600B21829 /* route.png in Resources */ = {isa = PBXBuildFile; fileRef = 074813B515E41E6600B21829 /* route.png */; };
+		074813BE15E41E6600B21829 /* help@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 074813B615E41E6600B21829 /* help@2x.png */; };
+		074CAC161641BBB400AAF32D /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 074CAC151641BBB400AAF32D /* Default-Portrait~ipad.png */; };
+		074CAC1F1641BE7200AAF32D /* iPadIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 074CAC1A1641BE7200AAF32D /* iPadIcon@2x.png */; };
+		074CAC201641BE7200AAF32D /* iPadIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 074CAC1B1641BE7200AAF32D /* iPadIcon.png */; };
+		074CAC241641BE8D00AAF32D /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 074CAC231641BE8D00AAF32D /* Default-Portrait@2x~ipad.png */; };
+		074CAC261641BE9500AAF32D /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 074CAC251641BE9500AAF32D /* Default-Landscape~ipad.png */; };
+		074CAC281641BE9C00AAF32D /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 074CAC271641BE9C00AAF32D /* Default-Landscape@2x~ipad.png */; };
+		075ACBBA1623892600D04D91 /* RoutePlannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 075ACBB91623892600D04D91 /* RoutePlannerViewController.m */; };
+		07615BDF15D95328003C691C /* FavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07615BDE15D95328003C691C /* FavoritesTableViewController.m */; };
+		076737771623EA9B00332ADA /* routeplan.png in Resources */ = {isa = PBXBuildFile; fileRef = 076737751623EA9B00332ADA /* routeplan.png */; };
+		076737781623EA9B00332ADA /* routeplan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 076737761623EA9B00332ADA /* routeplan@2x.png */; };
+		078EBDD115D380D800FCA1D9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078EBDD015D380D700FCA1D9 /* CoreData.framework */; };
+		07BA275715E585FF005BC40B /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 07BA275615E585FF005BC40B /* iTunesArtwork.png */; };
+		07BB7B9215CC73DA007A0531 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BB7B9115CC73DA007A0531 /* UIKit.framework */; };
+		07BB7B9415CC73DA007A0531 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BB7B9315CC73DA007A0531 /* Foundation.framework */; };
+		07BB7B9615CC73DA007A0531 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BB7B9515CC73DA007A0531 /* CoreGraphics.framework */; };
+		07BB7B9C15CC73DA007A0531 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07BB7B9A15CC73DA007A0531 /* InfoPlist.strings */; };
+		07BB7B9E15CC73DA007A0531 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BB7B9D15CC73DA007A0531 /* main.m */; };
+		07BB7BA215CC73DA007A0531 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BB7BA115CC73DA007A0531 /* AppDelegate.m */; };
+		07BB7BA515CC73DA007A0531 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07BB7BA315CC73DA007A0531 /* MainStoryboard.storyboard */; };
+		07BB7BA815CC73DA007A0531 /* UTAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BB7BA715CC73DA007A0531 /* UTAViewController.m */; };
+		07BB7BAF15CC7402007A0531 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BB7BAE15CC7402007A0531 /* CoreLocation.framework */; };
+		07BB7BB115CC740A007A0531 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BB7BB015CC740A007A0531 /* MapKit.framework */; };
+		07BB7BB715CC74FF007A0531 /* UtaFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BB7BB615CC74FF007A0531 /* UtaFetcher.m */; };
+		07BE44E815E8401400E757BF /* timetableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BE44E715E8401400E757BF /* timetableViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		072D5234160194CD00902D9E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		0735E3CE15D9CB6400BBEE9E /* UTAStopMonitoringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UTAStopMonitoringViewController.h; sourceTree = "<group>"; };
+		0735E3CF15D9CB6400BBEE9E /* UTAStopMonitoringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UTAStopMonitoringViewController.m; sourceTree = "<group>"; };
+		0735E3D215D9D1A100BBEE9E /* Salt Lake City.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Salt Lake City.gpx"; sourceTree = "<group>"; };
+		0735E3D415DA147200BBEE9E /* StopMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopMapViewController.h; sourceTree = "<group>"; };
+		0735E3D515DA147200BBEE9E /* StopMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopMapViewController.m; sourceTree = "<group>"; };
+		0735E3D715DB09FE00BBEE9E /* StopInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopInfoTableViewController.h; sourceTree = "<group>"; };
+		0735E3D815DB09FE00BBEE9E /* StopInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopInfoTableViewController.m; sourceTree = "<group>"; };
+		0736D08715EC094400515506 /* UTAGTFS.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = UTAGTFS.sqlite; sourceTree = "<group>"; };
+		073ADC8A164092D30005FF7B /* UTAService.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; name = UTAService.geojson; path = ../UTAService.geojson; sourceTree = "<group>"; };
+		073BC80C15EBFFB4002A9519 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		0740D84315D027C90075A32C /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		0740D84415D027C90075A32C /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		0740D84715D053B30075A32C /* LocationAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationAnnotation.h; sourceTree = "<group>"; };
+		0740D84815D053B30075A32C /* LocationAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationAnnotation.m; sourceTree = "<group>"; };
+		0748138215E2C92B00B21829 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0748138715E2C9F600B21829 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		0748138815E2C9F600B21829 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		0748138F15E308D700B21829 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
+		0748139015E308D700B21829 /* default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default@2x.png"; sourceTree = "<group>"; };
+		0748139115E308D700B21829 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		0748139215E308D700B21829 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		0748139715E4072300B21829 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		0748139815E4072300B21829 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		0748139A15E415CD00B21829 /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
+		074813AF15E41E6600B21829 /* closest@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closest@2x.png"; sourceTree = "<group>"; };
+		074813B015E41E6600B21829 /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
+		074813B115E41E6600B21829 /* route@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "route@2x.png"; sourceTree = "<group>"; };
+		074813B215E41E6600B21829 /* favorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites@2x.png"; sourceTree = "<group>"; };
+		074813B315E41E6600B21829 /* favorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorites.png; sourceTree = "<group>"; };
+		074813B415E41E6600B21829 /* closest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closest.png; sourceTree = "<group>"; };
+		074813B515E41E6600B21829 /* route.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = route.png; sourceTree = "<group>"; };
+		074813B615E41E6600B21829 /* help@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help@2x.png"; sourceTree = "<group>"; };
+		074CAC151641BBB400AAF32D /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		074CAC1A1641BE7200AAF32D /* iPadIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPadIcon@2x.png"; sourceTree = "<group>"; };
+		074CAC1B1641BE7200AAF32D /* iPadIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPadIcon.png; sourceTree = "<group>"; };
+		074CAC231641BE8D00AAF32D /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		074CAC251641BE9500AAF32D /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		074CAC271641BE9C00AAF32D /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		075ACBB81623892600D04D91 /* RoutePlannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutePlannerViewController.h; sourceTree = "<group>"; };
+		075ACBB91623892600D04D91 /* RoutePlannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoutePlannerViewController.m; sourceTree = "<group>"; };
+		07615BDD15D95328003C691C /* FavoritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesTableViewController.h; sourceTree = "<group>"; };
+		07615BDE15D95328003C691C /* FavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesTableViewController.m; sourceTree = "<group>"; };
+		076737751623EA9B00332ADA /* routeplan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = routeplan.png; sourceTree = "<group>"; };
+		076737761623EA9B00332ADA /* routeplan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "routeplan@2x.png"; sourceTree = "<group>"; };
+		078EBDD015D380D700FCA1D9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		07BA275615E585FF005BC40B /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
+		07BB7B8D15CC73DA007A0531 /* Utah Bus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Utah Bus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		07BB7B9115CC73DA007A0531 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		07BB7B9315CC73DA007A0531 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		07BB7B9515CC73DA007A0531 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		07BB7B9915CC73DA007A0531 /* Utah Bus-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Utah Bus-Info.plist"; sourceTree = "<group>"; };
+		07BB7B9B15CC73DA007A0531 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		07BB7B9D15CC73DA007A0531 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		07BB7B9F15CC73DA007A0531 /* Utah Bus-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Utah Bus-Prefix.pch"; sourceTree = "<group>"; };
+		07BB7BA015CC73DA007A0531 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		07BB7BA115CC73DA007A0531 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		07BB7BA415CC73DA007A0531 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		07BB7BA615CC73DA007A0531 /* UTAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UTAViewController.h; sourceTree = "<group>"; };
+		07BB7BA715CC73DA007A0531 /* UTAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UTAViewController.m; sourceTree = "<group>"; };
+		07BB7BAE15CC7402007A0531 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		07BB7BB015CC740A007A0531 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		07BB7BB415CC7489007A0531 /* UtaAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UtaAPIKey.h; path = ../UtaAPIKey.h; sourceTree = "<group>"; };
+		07BB7BB515CC74FF007A0531 /* UtaFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtaFetcher.h; sourceTree = "<group>"; };
+		07BB7BB615CC74FF007A0531 /* UtaFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtaFetcher.m; sourceTree = "<group>"; };
+		07BE44E615E8401400E757BF /* timetableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timetableViewController.h; sourceTree = "<group>"; };
+		07BE44E715E8401400E757BF /* timetableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = timetableViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		07BB7B8A15CC73DA007A0531 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0748138315E2C92B00B21829 /* SystemConfiguration.framework in Frameworks */,
+				078EBDD115D380D800FCA1D9 /* CoreData.framework in Frameworks */,
+				07BB7BB115CC740A007A0531 /* MapKit.framework in Frameworks */,
+				07BB7BAF15CC7402007A0531 /* CoreLocation.framework in Frameworks */,
+				07BB7B9215CC73DA007A0531 /* UIKit.framework in Frameworks */,
+				07BB7B9415CC73DA007A0531 /* Foundation.framework in Frameworks */,
+				07BB7B9615CC73DA007A0531 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		07BB7B8215CC73DA007A0531 = {
+			isa = PBXGroup;
+			children = (
+				074CAC271641BE9C00AAF32D /* Default-Landscape@2x~ipad.png */,
+				074CAC251641BE9500AAF32D /* Default-Landscape~ipad.png */,
+				074CAC231641BE8D00AAF32D /* Default-Portrait@2x~ipad.png */,
+				074CAC151641BBB400AAF32D /* Default-Portrait~ipad.png */,
+				072D5234160194CD00902D9E /* Default-568h@2x.png */,
+				07BA275615E585FF005BC40B /* iTunesArtwork.png */,
+				0748138F15E308D700B21829 /* default.png */,
+				074CAC1A1641BE7200AAF32D /* iPadIcon@2x.png */,
+				074CAC1B1641BE7200AAF32D /* iPadIcon.png */,
+				0748139015E308D700B21829 /* default@2x.png */,
+				0748139115E308D700B21829 /* icon.png */,
+				0748139215E308D700B21829 /* icon@2x.png */,
+				0748138215E2C92B00B21829 /* SystemConfiguration.framework */,
+				078EBDD015D380D700FCA1D9 /* CoreData.framework */,
+				07BB7BB015CC740A007A0531 /* MapKit.framework */,
+				07BB7BAE15CC7402007A0531 /* CoreLocation.framework */,
+				07BB7B9715CC73DA007A0531 /* Utah Bus */,
+				07BB7B9015CC73DA007A0531 /* Frameworks */,
+				07BB7B8E15CC73DA007A0531 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		07BB7B8E15CC73DA007A0531 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				07BB7B8D15CC73DA007A0531 /* Utah Bus.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		07BB7B9015CC73DA007A0531 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				07BB7B9115CC73DA007A0531 /* UIKit.framework */,
+				07BB7B9315CC73DA007A0531 /* Foundation.framework */,
+				07BB7B9515CC73DA007A0531 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		07BB7B9715CC73DA007A0531 /* Utah Bus */ = {
+			isa = PBXGroup;
+			children = (
+				076737751623EA9B00332ADA /* routeplan.png */,
+				076737761623EA9B00332ADA /* routeplan@2x.png */,
+				0736D08715EC094400515506 /* UTAGTFS.sqlite */,
+				073BC80B15EBFFB4002A9519 /* Model.xcdatamodeld */,
+				074813AF15E41E6600B21829 /* closest@2x.png */,
+				074813B015E41E6600B21829 /* help.png */,
+				074813B115E41E6600B21829 /* route@2x.png */,
+				074813B215E41E6600B21829 /* favorites@2x.png */,
+				074813B315E41E6600B21829 /* favorites.png */,
+				074813B415E41E6600B21829 /* closest.png */,
+				074813B515E41E6600B21829 /* route.png */,
+				074813B615E41E6600B21829 /* help@2x.png */,
+				0748139A15E415CD00B21829 /* help.html */,
+				0748138715E2C9F600B21829 /* Reachability.h */,
+				0748138815E2C9F600B21829 /* Reachability.m */,
+				0735E3D415DA147200BBEE9E /* StopMapViewController.h */,
+				0735E3D515DA147200BBEE9E /* StopMapViewController.m */,
+				0735E3CE15D9CB6400BBEE9E /* UTAStopMonitoringViewController.h */,
+				0735E3CF15D9CB6400BBEE9E /* UTAStopMonitoringViewController.m */,
+				0735E3D715DB09FE00BBEE9E /* StopInfoTableViewController.h */,
+				0735E3D815DB09FE00BBEE9E /* StopInfoTableViewController.m */,
+				0740D84715D053B30075A32C /* LocationAnnotation.h */,
+				0740D84815D053B30075A32C /* LocationAnnotation.m */,
+				0740D84315D027C90075A32C /* MapViewController.h */,
+				0740D84415D027C90075A32C /* MapViewController.m */,
+				07BB7BB415CC7489007A0531 /* UtaAPIKey.h */,
+				07BB7BB515CC74FF007A0531 /* UtaFetcher.h */,
+				07BB7BB615CC74FF007A0531 /* UtaFetcher.m */,
+				07BB7BA015CC73DA007A0531 /* AppDelegate.h */,
+				07BB7BA115CC73DA007A0531 /* AppDelegate.m */,
+				07BB7BA315CC73DA007A0531 /* MainStoryboard.storyboard */,
+				0748139715E4072300B21829 /* HelpViewController.h */,
+				0748139815E4072300B21829 /* HelpViewController.m */,
+				07BE44E615E8401400E757BF /* timetableViewController.h */,
+				07BE44E715E8401400E757BF /* timetableViewController.m */,
+				075ACBB81623892600D04D91 /* RoutePlannerViewController.h */,
+				075ACBB91623892600D04D91 /* RoutePlannerViewController.m */,
+				07BB7BA615CC73DA007A0531 /* UTAViewController.h */,
+				07BB7BA715CC73DA007A0531 /* UTAViewController.m */,
+				07615BDD15D95328003C691C /* FavoritesTableViewController.h */,
+				07615BDE15D95328003C691C /* FavoritesTableViewController.m */,
+				07BB7B9815CC73DA007A0531 /* Supporting Files */,
+			);
+			path = "Utah Bus";
+			sourceTree = "<group>";
+		};
+		07BB7B9815CC73DA007A0531 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				073ADC8A164092D30005FF7B /* UTAService.geojson */,
+				0735E3D215D9D1A100BBEE9E /* Salt Lake City.gpx */,
+				07BB7B9915CC73DA007A0531 /* Utah Bus-Info.plist */,
+				07BB7B9A15CC73DA007A0531 /* InfoPlist.strings */,
+				07BB7B9D15CC73DA007A0531 /* main.m */,
+				07BB7B9F15CC73DA007A0531 /* Utah Bus-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		07BB7B8C15CC73DA007A0531 /* Utah Bus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07BB7BAB15CC73DA007A0531 /* Build configuration list for PBXNativeTarget "Utah Bus" */;
+			buildPhases = (
+				07BB7B8915CC73DA007A0531 /* Sources */,
+				07BB7B8A15CC73DA007A0531 /* Frameworks */,
+				07BB7B8B15CC73DA007A0531 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Utah Bus";
+			productName = "Utah Bus";
+			productReference = 07BB7B8D15CC73DA007A0531 /* Utah Bus.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		07BB7B8415CC73DA007A0531 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Ravi Alla";
+			};
+			buildConfigurationList = 07BB7B8715CC73DA007A0531 /* Build configuration list for PBXProject "Utah Bus" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 07BB7B8215CC73DA007A0531;
+			productRefGroup = 07BB7B8E15CC73DA007A0531 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				07BB7B8C15CC73DA007A0531 /* Utah Bus */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		07BB7B8B15CC73DA007A0531 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07BB7B9C15CC73DA007A0531 /* InfoPlist.strings in Resources */,
+				07BB7BA515CC73DA007A0531 /* MainStoryboard.storyboard in Resources */,
+				0735E3D315D9D1A100BBEE9E /* Salt Lake City.gpx in Resources */,
+				0748139315E308D700B21829 /* default.png in Resources */,
+				0748139415E308D700B21829 /* default@2x.png in Resources */,
+				0748139515E308D700B21829 /* icon.png in Resources */,
+				0748139615E308D700B21829 /* icon@2x.png in Resources */,
+				0748139B15E415CD00B21829 /* help.html in Resources */,
+				074813B715E41E6600B21829 /* closest@2x.png in Resources */,
+				074813B815E41E6600B21829 /* help.png in Resources */,
+				074813B915E41E6600B21829 /* route@2x.png in Resources */,
+				074813BA15E41E6600B21829 /* favorites@2x.png in Resources */,
+				074813BB15E41E6600B21829 /* favorites.png in Resources */,
+				074813BC15E41E6600B21829 /* closest.png in Resources */,
+				074813BD15E41E6600B21829 /* route.png in Resources */,
+				074813BE15E41E6600B21829 /* help@2x.png in Resources */,
+				07BA275715E585FF005BC40B /* iTunesArtwork.png in Resources */,
+				0736D08815EC094400515506 /* UTAGTFS.sqlite in Resources */,
+				072D5235160194CD00902D9E /* Default-568h@2x.png in Resources */,
+				076737771623EA9B00332ADA /* routeplan.png in Resources */,
+				076737781623EA9B00332ADA /* routeplan@2x.png in Resources */,
+				074CAC161641BBB400AAF32D /* Default-Portrait~ipad.png in Resources */,
+				074CAC1F1641BE7200AAF32D /* iPadIcon@2x.png in Resources */,
+				074CAC201641BE7200AAF32D /* iPadIcon.png in Resources */,
+				074CAC241641BE8D00AAF32D /* Default-Portrait@2x~ipad.png in Resources */,
+				074CAC261641BE9500AAF32D /* Default-Landscape~ipad.png in Resources */,
+				074CAC281641BE9C00AAF32D /* Default-Landscape@2x~ipad.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		07BB7B8915CC73DA007A0531 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07BB7B9E15CC73DA007A0531 /* main.m in Sources */,
+				07BB7BA215CC73DA007A0531 /* AppDelegate.m in Sources */,
+				07BB7BA815CC73DA007A0531 /* UTAViewController.m in Sources */,
+				07BB7BB715CC74FF007A0531 /* UtaFetcher.m in Sources */,
+				0740D84515D027C90075A32C /* MapViewController.m in Sources */,
+				0740D84915D053B30075A32C /* LocationAnnotation.m in Sources */,
+				07615BDF15D95328003C691C /* FavoritesTableViewController.m in Sources */,
+				0735E3D015D9CB6400BBEE9E /* UTAStopMonitoringViewController.m in Sources */,
+				0735E3D615DA147200BBEE9E /* StopMapViewController.m in Sources */,
+				0735E3D915DB09FE00BBEE9E /* StopInfoTableViewController.m in Sources */,
+				0748138915E2C9F600B21829 /* Reachability.m in Sources */,
+				0748139915E4072300B21829 /* HelpViewController.m in Sources */,
+				07BE44E815E8401400E757BF /* timetableViewController.m in Sources */,
+				073BC80D15EBFFB4002A9519 /* Model.xcdatamodeld in Sources */,
+				075ACBBA1623892600D04D91 /* RoutePlannerViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		07BB7B9A15CC73DA007A0531 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				07BB7B9B15CC73DA007A0531 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		07BB7BA315CC73DA007A0531 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				07BB7BA415CC73DA007A0531 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		07BB7BA915CC73DA007A0531 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = armv7;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		07BB7BAA15CC73DA007A0531 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = armv7;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ravi Alla";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "C49B71E2-BA55-48B1-997E-EC62A0EF89CA";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		07BB7BAC15CC73DA007A0531 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = armv7;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ravi Alla (BZ529BVW3Z)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ravi Alla (BZ529BVW3Z)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Utah Bus/Utah Bus-Prefix.pch";
+				INFOPLIST_FILE = "Utah Bus/Utah Bus-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "31201DCC-2B55-4115-848F-35F11D73A32C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "31201DCC-2B55-4115-848F-35F11D73A32C";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		07BB7BAD15CC73DA007A0531 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = armv7;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ravi Alla";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ravi Alla";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Utah Bus/Utah Bus-Prefix.pch";
+				INFOPLIST_FILE = "Utah Bus/Utah Bus-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "C49B71E2-BA55-48B1-997E-EC62A0EF89CA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C49B71E2-BA55-48B1-997E-EC62A0EF89CA";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		07BB7B8715CC73DA007A0531 /* Build configuration list for PBXProject "Utah Bus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07BB7BA915CC73DA007A0531 /* Debug */,
+				07BB7BAA15CC73DA007A0531 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		07BB7BAB15CC73DA007A0531 /* Build configuration list for PBXNativeTarget "Utah Bus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07BB7BAC15CC73DA007A0531 /* Debug */,
+				07BB7BAD15CC73DA007A0531 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		073BC80B15EBFFB4002A9519 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				073BC80C15EBFFB4002A9519 /* Model.xcdatamodel */,
+			);
+			currentVersion = 073BC80C15EBFFB4002A9519 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 07BB7B8415CC73DA007A0531 /* Project object */;
+}
