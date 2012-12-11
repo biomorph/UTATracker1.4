@@ -12,7 +12,6 @@
 		0735E3D315D9D1A100BBEE9E /* Salt Lake City.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 0735E3D215D9D1A100BBEE9E /* Salt Lake City.gpx */; };
 		0735E3D615DA147200BBEE9E /* StopMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0735E3D515DA147200BBEE9E /* StopMapViewController.m */; };
 		0735E3D915DB09FE00BBEE9E /* StopInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0735E3D815DB09FE00BBEE9E /* StopInfoTableViewController.m */; };
-		0736D08815EC094400515506 /* UTAGTFS.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0736D08715EC094400515506 /* UTAGTFS.sqlite */; };
 		073BC80D15EBFFB4002A9519 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 073BC80B15EBFFB4002A9519 /* Model.xcdatamodeld */; };
 		0740D84515D027C90075A32C /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0740D84415D027C90075A32C /* MapViewController.m */; };
 		0740D84915D053B30075A32C /* LocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0740D84815D053B30075A32C /* LocationAnnotation.m */; };
@@ -43,6 +42,7 @@
 		076737771623EA9B00332ADA /* routeplan.png in Resources */ = {isa = PBXBuildFile; fileRef = 076737751623EA9B00332ADA /* routeplan.png */; };
 		076737781623EA9B00332ADA /* routeplan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 076737761623EA9B00332ADA /* routeplan@2x.png */; };
 		078EBDD115D380D800FCA1D9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078EBDD015D380D700FCA1D9 /* CoreData.framework */; };
+		07A6566F16770BD50023B208 /* UTAGTFS.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 07A6566E16770BD50023B208 /* UTAGTFS.sqlite */; };
 		07BA275715E585FF005BC40B /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 07BA275615E585FF005BC40B /* iTunesArtwork.png */; };
 		07BB7B9215CC73DA007A0531 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BB7B9115CC73DA007A0531 /* UIKit.framework */; };
 		07BB7B9415CC73DA007A0531 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BB7B9315CC73DA007A0531 /* Foundation.framework */; };
@@ -67,7 +67,6 @@
 		0735E3D515DA147200BBEE9E /* StopMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopMapViewController.m; sourceTree = "<group>"; };
 		0735E3D715DB09FE00BBEE9E /* StopInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopInfoTableViewController.h; sourceTree = "<group>"; };
 		0735E3D815DB09FE00BBEE9E /* StopInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopInfoTableViewController.m; sourceTree = "<group>"; };
-		0736D08715EC094400515506 /* UTAGTFS.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = UTAGTFS.sqlite; sourceTree = "<group>"; };
 		073ADC8A164092D30005FF7B /* UTAService.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; name = UTAService.geojson; path = ../UTAService.geojson; sourceTree = "<group>"; };
 		073BC80C15EBFFB4002A9519 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		0740D84315D027C90075A32C /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -105,6 +104,7 @@
 		076737751623EA9B00332ADA /* routeplan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = routeplan.png; sourceTree = "<group>"; };
 		076737761623EA9B00332ADA /* routeplan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "routeplan@2x.png"; sourceTree = "<group>"; };
 		078EBDD015D380D700FCA1D9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		07A6566E16770BD50023B208 /* UTAGTFS.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = UTAGTFS.sqlite; sourceTree = "<group>"; };
 		07BA275615E585FF005BC40B /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		07BB7B8D15CC73DA007A0531 /* Utah Bus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Utah Bus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07BB7B9115CC73DA007A0531 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -194,7 +194,6 @@
 			children = (
 				076737751623EA9B00332ADA /* routeplan.png */,
 				076737761623EA9B00332ADA /* routeplan@2x.png */,
-				0736D08715EC094400515506 /* UTAGTFS.sqlite */,
 				073BC80B15EBFFB4002A9519 /* Model.xcdatamodeld */,
 				074813AF15E41E6600B21829 /* closest@2x.png */,
 				074813B015E41E6600B21829 /* help.png */,
@@ -213,6 +212,7 @@
 				0735E3CF15D9CB6400BBEE9E /* UTAStopMonitoringViewController.m */,
 				0735E3D715DB09FE00BBEE9E /* StopInfoTableViewController.h */,
 				0735E3D815DB09FE00BBEE9E /* StopInfoTableViewController.m */,
+				07A6566E16770BD50023B208 /* UTAGTFS.sqlite */,
 				0740D84715D053B30075A32C /* LocationAnnotation.h */,
 				0740D84815D053B30075A32C /* LocationAnnotation.m */,
 				0740D84315D027C90075A32C /* MapViewController.h */,
@@ -319,7 +319,6 @@
 				074813BD15E41E6600B21829 /* route.png in Resources */,
 				074813BE15E41E6600B21829 /* help@2x.png in Resources */,
 				07BA275715E585FF005BC40B /* iTunesArtwork.png in Resources */,
-				0736D08815EC094400515506 /* UTAGTFS.sqlite in Resources */,
 				072D5235160194CD00902D9E /* Default-568h@2x.png in Resources */,
 				076737771623EA9B00332ADA /* routeplan.png in Resources */,
 				076737781623EA9B00332ADA /* routeplan@2x.png in Resources */,
@@ -329,6 +328,7 @@
 				074CAC241641BE8D00AAF32D /* Default-Portrait@2x~ipad.png in Resources */,
 				074CAC261641BE9500AAF32D /* Default-Landscape~ipad.png in Resources */,
 				074CAC281641BE9C00AAF32D /* Default-Landscape@2x~ipad.png in Resources */,
+				07A6566F16770BD50023B208 /* UTAGTFS.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
