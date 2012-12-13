@@ -60,7 +60,7 @@
     }
    
 // Setting the initial zoom based on the highest and lowest values of the latitudes and longitudes of the buses' locations
-    if ([self.annotations count]!= 0)/* && [self.shape_lon count]!=0)*/{
+    if ([self.annotations count]!= 0 || [self.shape_lon count]!=0){
         NSMutableArray *latitude = [NSMutableArray arrayWithArray:self.shape_lt];
     NSMutableArray *longitude = [NSMutableArray arrayWithArray:self.shape_lon];
         for (LocationAnnotation *annotation in self.annotations){
@@ -107,6 +107,7 @@
    
 // This is where i am making an array of coordinates to make an MKPolyLine out of
     NSInteger numberofSteps = [self.shape_lt count];
+    //NSLog(@"number of shape points is %d",numberofSteps);
     CLLocationCoordinate2D coordinates [numberofSteps];
     for (NSInteger index = 0; index <numberofSteps; index++){
         float latitude = [[self.shape_lt objectAtIndex:index]floatValue];

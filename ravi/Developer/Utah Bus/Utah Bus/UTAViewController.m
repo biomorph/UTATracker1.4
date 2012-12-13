@@ -231,8 +231,10 @@ if (!self.refreshPressed){
     [fetchRequest setEntity:entity];
     [fetchRequest setPredicate:routePredicate];
     NSArray *fetchedRoutes = [self.managedObjectContext executeFetchRequest:fetchRequest error:NULL];
+    NSLog(@"fetchedRoutes number %@",fetchedRoutes);
+
     routeID = [[fetchedRoutes lastObject] valueForKey:@"route_id"];
-    
+    NSLog(@"RouteID %@",routeID);
     // Here I am fetching the shapeID from core data entity trips, based on the routeID I got from above
     NSEntityDescription *tripsEntity = [NSEntityDescription entityForName:@"Trips"
                                                    inManagedObjectContext:self.managedObjectContext];
@@ -250,6 +252,7 @@ if (!self.refreshPressed){
             if (![unique_shape_ids containsObject:[trip valueForKey:@"shape_id"]])[unique_shape_ids addObject:[trip valueForKey:@"shape_id"]];
         }
     }
+    //NSLog(@"Shape_ids are %@",unique_shape_ids);
     if ([unique_shape_ids count]>0){
     NSString *highest_count_shape_id = [NSString string];
     NSUInteger maxcount=0;
@@ -270,19 +273,21 @@ if (!self.refreshPressed){
     }
     [unique_shape_ids removeAllObjects];
     [unique_shape_ids addObject:highest_count_shape_id];
-    [unique_shape_ids addObject:second_highest_count_shape_id];
+    if (second_highest_count_shape_id)[unique_shape_ids addObject:second_highest_count_shape_id];
     }
     self.shape_lt = nil;
     self.shape_lon = nil;
     for (NSString *shapeID in unique_shape_ids){
+    //NSString *shapeID = [unique_shape_ids objectAtIndex:0];
     // Here I am fetching the shape_pt_lat and shape_pt_long from core data entity shapes, based on the shapeID I got above
+    //NSLog(@"Shape_ids are %@",shapeID);
     NSEntityDescription *shapesEntity = [NSEntityDescription entityForName:@"Shapes"
                                                     inManagedObjectContext:self.managedObjectContext];
     NSPredicate *shapePredicate = [NSPredicate predicateWithFormat:@"shape_id=%@",shapeID];
     [fetchRequest setEntity:shapesEntity];
     [fetchRequest setPredicate:shapePredicate];
     NSArray *fetchedShapes = [self.managedObjectContext executeFetchRequest:fetchRequest error:NULL];
-    
+    NSLog(@"number of shape points is %d",[fetchedShapes count]);
         for (NSManagedObject *shape in fetchedShapes){
             if([[shape valueForKey:@"shape_id"] isEqualToString:shapeID]){
             [self.shape_lt addObject:[shape valueForKey:@"shape_pt_lat"]];
