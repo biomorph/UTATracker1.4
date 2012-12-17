@@ -107,10 +107,10 @@
         return _persistentStoreCoordinator;
     }
 //This is where I check if the sqlite exists or not, if it doesn't I load the UTAGTFS.sqlite and associate it with the Model core data model
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"UTAGTFS.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"GTFS.sqlite"];
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]]) {
-        NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"UTAGTFS" ofType:@"sqlite"]];
+        NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"GTFS" ofType:@"sqlite"]];
         NSError* err = nil;
         
         if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:storeURL error:&err]) {

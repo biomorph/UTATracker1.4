@@ -22,5 +22,6 @@
 @property (strong, nonatomic) NSMutableArray *shape_lon;
 @property (strong, nonatomic) id <RefreshDelegate> refreshDelegate;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) NSDictionary *dictOfShapeArrays;
 
 @end

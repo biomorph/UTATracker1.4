@@ -214,7 +214,7 @@ else return  nil;
     self.navigationItem.rightBarButtonItems = navigationItems;
     self.navigationItem.titleView = spinner;
     NSString *url = [NSString stringWithFormat:@"http://api.rideuta.com/SIRI/SIRI.svc/StopMonitor?stopid=%@&minutesout=60&onwardcalls=true&filterroute=&usertoken=%@",atStop,UtaAPIKey];
-    NSLog(@"url is %@",url);
+    //NSLog(@"url is %@",url);
     dispatch_queue_t xmlGetter = dispatch_queue_create("UTA xml getter", NULL);
     dispatch_async(xmlGetter, ^{
         Reachability *reachability = [Reachability reachabilityForInternetConnection];

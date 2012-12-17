@@ -40,6 +40,7 @@
 @synthesize shape_lon = _shape_lon;
 @synthesize shape_lt = _shape_lt;
 @synthesize refreshDelegate = _refreshDelegate;
+@synthesize dictOfShapeArrays = _dictOfShapeArrays;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -106,44 +107,70 @@
 }
    
 // This is where i am making an array of coordinates to make an MKPolyLine out of
-    NSInteger numberofSteps = [self.shape_lt count];
+   /* NSInteger numberofSteps = [self.shape_lt count];
     //NSLog(@"number of shape points is %d",numberofSteps);
-    CLLocationCoordinate2D coordinates [numberofSteps];
+    NSMutableArray *arrayOfCoordinates = [NSMutableArray arrayWithCapacity:numberofSteps];
     for (NSInteger index = 0; index <numberofSteps; index++){
         float latitude = [[self.shape_lt objectAtIndex:index]floatValue];
         float longitude = [[self.shape_lon objectAtIndex:index]floatValue];
-        CLLocationCoordinate2D coordinate;
-        coordinate.latitude = latitude;
-        coordinate.longitude = longitude;
-        coordinates[index] = coordinate;
+        CLLocation *newLocation = [[CLLocation alloc]initWithLatitude:latitude longitude:longitude];
+        [arrayOfCoordinates addObject:newLocation];
     }
-// Making the mkpolyline with the coordinates array i made above
-    MKPolyline *polyLine = [MKPolyline polylineWithCoordinates:coordinates count:numberofSteps];
-    if (![self.mapView overlays])[self.mapView addOverlay:polyLine];
+    CLLocation *firstLocation;
+    if ([arrayOfCoordinates count]) firstLocation= [arrayOfCoordinates objectAtIndex:0];
+    NSArray *orderedArrayOfCoordinates = [arrayOfCoordinates sortedArrayUsingComparator:^(id a, id b) {
+        CLLocationDistance distanceA = [a distanceFromLocation:firstLocation];
+        CLLocationDistance distanceB = [b distanceFromLocation:firstLocation];
+        if (distanceA < distanceB)return NSOrderedAscending;
+        else if (distanceA > distanceB) return NSOrderedDescending;
+        else return NSOrderedSame;
+    }];
+    CLLocationCoordinate2D coordinates [numberofSteps];
+    for (NSInteger index = 0; index <numberofSteps; index++){
+       if ([orderedArrayOfCoordinates count]) coordinates[index]=[[orderedArrayOfCoordinates objectAtIndex:index] coordinate];
+    }*/
+    
+    if (self.dictOfShapeArrays){
+        for (NSString *shapeID in self.dictOfShapeArrays){
+            NSArray *shapeCoordinates = [self.dictOfShapeArrays valueForKey:shapeID];
+            int numberofSteps = [shapeCoordinates count];
+            CLLocationCoordinate2D coordinates [numberofSteps];
+            for (CLLocation *shapeLocationCoordinate in shapeCoordinates){
+                CLLocationCoordinate2D shapeCoordinate = [shapeLocationCoordinate coordinate];
+                coordinates [[shapeCoordinates indexOfObject:shapeLocationCoordinate]] = shapeCoordinate;
+            }
+                
+            MKPolyline *polyLine = [MKPolyline polylineWithCoordinates:coordinates count:[shapeCoordinates count]];
+            polyLine.title = shapeID;
+            [self.mapView addOverlay:polyLine];
+        }
+    }
+
 }
 
 //setting up the annotations and customizing the rightcalloutaccessory
 - (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
-    NSString *direction = [annotation subtitle];
+    NSString *direction = [[NSString alloc]init];
+        direction = [annotation subtitle];
     if (![annotation isKindOfClass:[MKUserLocation class]]){
-    MKPinAnnotationView *aView =(MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Bus Coordinates"];
-        aView = nil;//[[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"Bus Coordinates"];
-    if (!aView){
-         aView = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"Bus Coordinates"];
-        aView.canShowCallout = YES;
-    }
-        aView.canShowCallout = YES;
-        if ([direction isEqualToString:[self.directionOfVehicle objectAtIndex:0]]){
+            MKPinAnnotationView *aView =(MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Bus Coordinates"];
+            aView = nil;//[[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"Bus Coordinates"];
+            if (!aView){
+                aView = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"Bus Coordinates"];
+                aView.canShowCallout = YES;
+            }
+            aView.canShowCallout = YES;
+            if ([direction isEqualToString:[self.directionOfVehicle objectAtIndex:0]]){
             aView.pinColor = MKPinAnnotationColorPurple;
-        }
-        else aView.pinColor = MKPinAnnotationColorRed;
-        aView.annotation = annotation;
-    aView.leftCalloutAccessoryView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
-        self.typeDetailDisclosure = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        aView.rightCalloutAccessoryView =self.typeDetailDisclosure;
-    return aView;
-    }
+            }
+            else aView.pinColor = MKPinAnnotationColorRed;
+            aView.annotation = annotation;
+            aView.leftCalloutAccessoryView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+            self.typeDetailDisclosure = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            aView.rightCalloutAccessoryView =self.typeDetailDisclosure;
+            return aView;
+            }
     else return nil;
 
 }
@@ -210,6 +237,7 @@
 // assigning a colored dot based on the current progress of the bus
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKPinAnnotationView *)view
 {
+    if ([view.annotation isKindOfClass:[LocationAnnotation class]]){
     self.vehicleInfo = [(LocationAnnotation *)view.annotation vehicleInfo];
     NSString *progress = [self.vehicleInfo objectForKey:PROGRESS_RATE];
     CGRect progressRect = CGRectMake(0, 0, 20, 20);
@@ -229,7 +257,7 @@
     [(UIImageView*)view.leftCalloutAccessoryView setImage:progressImage];
     if (view.pinColor==MKPinAnnotationColorRed)self.direction = @"1";
     else self.direction = @"0";
-    
+    }
 }
 
 
@@ -276,8 +304,8 @@
 {
     [super viewDidLoad];
     [self updateLocation];
-    if (self.shape_lon)self.shape_lon = nil;
-    if (self.shape_lt) self.shape_lt = nil;
+    //if (self.shape_lon)self.shape_lon = nil;
+    //if (self.shape_lt) self.shape_lt = nil;
 	// Do any additional setup after loading the view.
 }
 

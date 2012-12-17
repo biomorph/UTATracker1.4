@@ -28,6 +28,7 @@
 @property (nonatomic) BOOL refreshPressed;
 @property (nonatomic) BOOL finishedGetting;
 @property (nonatomic,strong) NSArray *refreshedAnnotations;
+@property (nonatomic, strong) NSMutableDictionary *dictOfShapeArrays;
 @property (nonatomic, strong) MapViewController *mapvc;
 @end
 
@@ -42,6 +43,7 @@
 @synthesize shape_lt = _shape_lt;
 @synthesize routeNames = _routeNames;
 @synthesize autoCompleteRouteNames = _autoCompleteRouteNames;
+@synthesize dictOfShapeArrays = _dictOfShapeArrays;
 
 
 // getting the managedobjectcontext and lazily instantiating
@@ -86,6 +88,12 @@
 {
     if (!_mapvc) _mapvc = [[MapViewController alloc]init];
     return _mapvc;
+}
+
+- (NSMutableDictionary *)dictOfShapeArrays
+{
+    if (!_dictOfShapeArrays)_dictOfShapeArrays=[[NSMutableDictionary alloc]init];
+    return _dictOfShapeArrays;
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -231,10 +239,11 @@ if (!self.refreshPressed){
     [fetchRequest setEntity:entity];
     [fetchRequest setPredicate:routePredicate];
     NSArray *fetchedRoutes = [self.managedObjectContext executeFetchRequest:fetchRequest error:NULL];
-    NSLog(@"fetchedRoutes number %@",fetchedRoutes);
-
-    routeID = [[fetchedRoutes lastObject] valueForKey:@"route_id"];
-    NSLog(@"RouteID %@",routeID);
+    //NSLog(@"fetchedRoutes number %@",fetchedRoutes);
+    NSMutableArray *unique_shape_ids = [NSMutableArray array];
+    for (NSManagedObject *route in fetchedRoutes){
+    routeID = [route valueForKey:@"route_id"];
+    //NSLog(@"RouteID %@",routeID);
     // Here I am fetching the shapeID from core data entity trips, based on the routeID I got from above
     NSEntityDescription *tripsEntity = [NSEntityDescription entityForName:@"Trips"
                                                    inManagedObjectContext:self.managedObjectContext];
@@ -245,15 +254,15 @@ if (!self.refreshPressed){
     //NSLog(@"fetchedTrip number %d",[fetchedTrips count]);
     NSCountedSet *shape_ids = [NSCountedSet set];
 
-    NSMutableArray *unique_shape_ids = [NSMutableArray array];
     for (NSManagedObject *trip in fetchedTrips){
         if ([[trip valueForKey:@"route_id"]isEqualToString:routeID]){
             [shape_ids addObject:[trip valueForKey:@"shape_id"]];
             if (![unique_shape_ids containsObject:[trip valueForKey:@"shape_id"]])[unique_shape_ids addObject:[trip valueForKey:@"shape_id"]];
         }
     }
+    }
     //NSLog(@"Shape_ids are %@",unique_shape_ids);
-    if ([unique_shape_ids count]>0){
+    /*if ([unique_shape_ids count]>0){
     NSString *highest_count_shape_id = [NSString string];
     NSUInteger maxcount=0;
     for (NSString *shape_id in unique_shape_ids){
@@ -274,25 +283,29 @@ if (!self.refreshPressed){
     [unique_shape_ids removeAllObjects];
     [unique_shape_ids addObject:highest_count_shape_id];
     if (second_highest_count_shape_id)[unique_shape_ids addObject:second_highest_count_shape_id];
-    }
+    }*/
     self.shape_lt = nil;
     self.shape_lon = nil;
     for (NSString *shapeID in unique_shape_ids){
     //NSString *shapeID = [unique_shape_ids objectAtIndex:0];
     // Here I am fetching the shape_pt_lat and shape_pt_long from core data entity shapes, based on the shapeID I got above
     //NSLog(@"Shape_ids are %@",shapeID);
+    NSMutableArray *shapeCoordinates = [[NSMutableArray alloc]init];
     NSEntityDescription *shapesEntity = [NSEntityDescription entityForName:@"Shapes"
                                                     inManagedObjectContext:self.managedObjectContext];
     NSPredicate *shapePredicate = [NSPredicate predicateWithFormat:@"shape_id=%@",shapeID];
     [fetchRequest setEntity:shapesEntity];
     [fetchRequest setPredicate:shapePredicate];
     NSArray *fetchedShapes = [self.managedObjectContext executeFetchRequest:fetchRequest error:NULL];
-    NSLog(@"number of shape points is %d",[fetchedShapes count]);
+    //NSLog(@"number of shape points is %d",[fetchedShapes count]);
         for (NSManagedObject *shape in fetchedShapes){
             if([[shape valueForKey:@"shape_id"] isEqualToString:shapeID]){
             [self.shape_lt addObject:[shape valueForKey:@"shape_pt_lat"]];
             [self.shape_lon addObject:[shape valueForKey:@"shape_pt_lon"]];
+            CLLocation *shapeLocation = [[CLLocation alloc]initWithLatitude:[[shape valueForKey:@"shape_pt_lat"]doubleValue] longitude:[[shape valueForKey:@"shape_pt_lon"]doubleValue]];
+                [shapeCoordinates addObject:shapeLocation];
             }
+            [self.dictOfShapeArrays setObject:shapeCoordinates forKey:[shape valueForKey:@"shape_id"]];
         }
     }
 }
@@ -351,6 +364,7 @@ if (!self.refreshPressed){
     return annotations;
 }
 
+
 - (NSArray *)refreshedAnnotations:(NSString *)withRoute :(MapViewController *)sender
 {
     self.refreshPressed = YES;
@@ -372,10 +386,12 @@ if (!self.refreshPressed){
         [segue.destinationViewController setAnnotations:[self mapAnnotations]];
         [segue.destinationViewController setShape_lon:self.shape_lon];
         [segue.destinationViewController setShape_lt:self.shape_lt];
+        [segue.destinationViewController setDictOfShapeArrays:self.dictOfShapeArrays];
         [self.tabBarController setSelectedIndex:0];
         [segue.destinationViewController setRefreshDelegate:self];
         self.shape_lon = nil;
         self.shape_lt = nil;
+        self.dictOfShapeArrays = nil;
     }
 }
 
