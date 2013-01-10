@@ -4,7 +4,7 @@
 //
 //  Created by Ravi Alla on 8/3/12.
 //  Copyright (c) 2012 Ravi Alla. All rights reserved.
-//
+// This is where the actual magic happens, where I get the queried info from the UTA API and parse the resulting XML and return info to other views
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>

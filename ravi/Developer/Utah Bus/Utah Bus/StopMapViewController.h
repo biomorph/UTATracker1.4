@@ -4,7 +4,7 @@
 //
 //  Created by Ravi Alla on 8/13/12.
 //  Copyright (c) 2012 Ravi Alla. All rights reserved.
-//
+//  This is for view which displays bus stops at current location
 
 #import "MapViewController.h"
 #import "Reachability.h"

@@ -4,7 +4,7 @@
 //
 //  Created by Ravi Alla on 8/3/12.
 //  Copyright (c) 2012 Ravi Alla. All rights reserved.
-//
+// I am populating my core data with route, stop, shape and trip infos
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>

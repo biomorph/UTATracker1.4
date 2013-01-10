@@ -4,7 +4,7 @@
 //
 //  Created by Ravi Alla on 8/14/12.
 //  Copyright (c) 2012 Ravi Alla. All rights reserved.
-//
+// This is for the table view that displays buses serving a selected stop in the next hour
 
 @class StopInfoTableViewController;
 @protocol RefreshStopDelegate

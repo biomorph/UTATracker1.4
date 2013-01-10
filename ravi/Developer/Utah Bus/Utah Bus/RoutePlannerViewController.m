@@ -4,7 +4,7 @@
 //
 //  Created by Ravi Alla on 10/8/12.
 //  Copyright (c) 2012 Ravi Alla. All rights reserved.
-//
+// This displays either UTA's route planning website or googles transit mobile website, in case you want to plan your trip.
 
 #import "RoutePlannerViewController.h"
 
@@ -71,6 +71,7 @@
     [self.routePlannerWebView reload];
 }
 
+// load UTA's route planning website when UTA button is pressed
 - (void)UTAtransit
 {
     NSString *googleTransitUrlString = [NSString stringWithFormat:@"http://www.rideuta.com/ridinguta/tripplanner/planner.aspx"];
@@ -83,6 +84,8 @@
     self.back.enabled = self.routePlannerWebView.canGoBack;
     self.forward.enabled = self.routePlannerWebView.canGoForward;
 }
+
+// load Google's mobile transit website when the view is loaded
 - (void)viewDidLoad
 {
     [super viewDidLoad];

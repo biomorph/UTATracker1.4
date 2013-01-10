@@ -4,7 +4,7 @@
 //
 //  Created by Ravi Alla on 8/14/12.
 //  Copyright (c) 2012 Ravi Alla. All rights reserved.
-//
+// This is for the table view that displays buses serving a selected stop in the next hour
 
 #import "StopInfoTableViewController.h"
 #import "UtaFetcher.h"
@@ -74,6 +74,8 @@
     
 
 }
+
+// This adds the current stop to your favorites
 - (IBAction)addStopToFaves:(UIBarButtonItem *)sender
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -152,11 +154,8 @@ return cell;
     self.route = [stop objectForKey:LINE_NAME];
     if (self.route)[self performSegueWithIdentifier:@"show timetable" sender:self.tableView];
 }
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
+
+
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)path
 {
     // Determine if row is selectable based on the NSIndexPath.
@@ -168,10 +167,13 @@ return cell;
     return nil;
 }
 
+// This refreshes the current stop, so you can see the updated times of the buses arriving
 - (IBAction)refreshFavoriteStop:(UIBarButtonItem *)sender
 {
     self.stopDescriptionForTable = [self.refreshStopDelegate refreshedStopInfo:self.stopID :self];
 }
+
+// preparing to segue when clicking on a bus brings up the timetable
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"show timetable"])
@@ -181,5 +183,12 @@ return cell;
 {
     return YES;
 }
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+}
+
 
 @end

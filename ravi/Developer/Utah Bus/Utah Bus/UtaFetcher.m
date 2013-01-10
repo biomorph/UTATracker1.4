@@ -4,7 +4,7 @@
 //
 //  Created by Ravi Alla on 8/3/12.
 //  Copyright (c) 2012 Ravi Alla. All rights reserved.
-//
+// This is where the actual magic happens, where I get the queried info from the UTA API
 
 #import "UtaFetcher.h"
 #import "UTAViewController.h"
@@ -62,7 +62,7 @@
 
 
 
-// Get the xml data from UTA website and send it to an NSXMLParser instance
+// returns info for a route query
 - (NSArray *) executeUtaFetcher :(NSString *) forRouteQuery
 {
     BOOL success;
@@ -80,6 +80,8 @@
     else return nil;
     
 }
+
+// returns info for stops close to me query
 - (NSArray *) executeFetcher:(NSString *)forStopQuery
 {
     BOOL success;
@@ -96,6 +98,7 @@
     else return nil;
 }
 
+// returns info for stop query
 - (NSArray *) executeStopFetcher : (NSString *) forStopId
 {
     BOOL success;

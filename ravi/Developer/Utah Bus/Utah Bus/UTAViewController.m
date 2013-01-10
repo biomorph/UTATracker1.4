@@ -4,7 +4,7 @@
 //
 //  Created by Ravi Alla on 8/3/12.
 //  Copyright (c) 2012 Ravi Alla. All rights reserved.
-//
+// This is for the first tab where you type in a route and track the progress of buses on that route
 
 #import "UTAViewController.h"
 #import "UtaFetcher.h"
@@ -109,7 +109,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // check for internet connection
+    
+    // Loading known routes so I can autofil when user starts typing, if needed
     /*NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults objectForKey:@"utabus.availableroutes"]){
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -141,18 +142,18 @@
     
 }
 
+// check for internet connection
 -(void) checkNetworkStatus:(NSNotification *)notice
 {
     self.internetActive = YES;
     NetworkStatus internetStatus = [self.internetReachable currentReachabilityStatus];
     if (internetStatus == NotReachable){
-            //NSLog(@"The internet is down.");
             self.internetActive = NO;
     }
             
 }
 
-
+// Autofil when user starts typing, using known routes
 // shows an autofil by substringing the typed characters
 /*- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
@@ -228,8 +229,7 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     NSString *urlString = [NSString stringWithFormat:@"http://api.rideuta.com/SIRI/SIRI.svc/VehicleMonitor/ByRoute?route=%@&onwardcalls=true&usertoken=%@",self.routeName.text,UtaAPIKey];
     
-    // Here I am fetching routeID from core data entity route, based on the bus typed into the text field
-    //NSLog(@"routename is %@",self.routeName.text);
+    // Here I am fetching routeID from core data entity route, based on the bus typed into the text field. I am also getting the route points so I can pass this to the mapview to plot the route map
 if (!self.refreshPressed){
     NSString *routeID = [NSString string];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -239,19 +239,15 @@ if (!self.refreshPressed){
     [fetchRequest setEntity:entity];
     [fetchRequest setPredicate:routePredicate];
     NSArray *fetchedRoutes = [self.managedObjectContext executeFetchRequest:fetchRequest error:NULL];
-    //NSLog(@"fetchedRoutes number %@",fetchedRoutes);
     NSMutableArray *unique_shape_ids = [NSMutableArray array];
     for (NSManagedObject *route in fetchedRoutes){
     routeID = [route valueForKey:@"route_id"];
-    //NSLog(@"RouteID %@",routeID);
-    // Here I am fetching the shapeID from core data entity trips, based on the routeID I got from above
     NSEntityDescription *tripsEntity = [NSEntityDescription entityForName:@"Trips"
                                                    inManagedObjectContext:self.managedObjectContext];
     NSPredicate *tripPredicate = [NSPredicate predicateWithFormat:@"route_id=%@",routeID];
     [fetchRequest setEntity:tripsEntity];
     [fetchRequest setPredicate:tripPredicate];
     NSArray *fetchedTrips = [self.managedObjectContext executeFetchRequest:fetchRequest error:NULL];
-    //NSLog(@"fetchedTrip number %d",[fetchedTrips count]);
     NSCountedSet *shape_ids = [NSCountedSet set];
 
     for (NSManagedObject *trip in fetchedTrips){
@@ -261,35 +257,9 @@ if (!self.refreshPressed){
         }
     }
     }
-    //NSLog(@"Shape_ids are %@",unique_shape_ids);
-    /*if ([unique_shape_ids count]>0){
-    NSString *highest_count_shape_id = [NSString string];
-    NSUInteger maxcount=0;
-    for (NSString *shape_id in unique_shape_ids){
-        if (maxcount<[shape_ids countForObject:shape_id]) {
-            maxcount = [shape_ids countForObject:shape_id];
-            highest_count_shape_id = shape_id;
-        }
-    }
-    [unique_shape_ids removeObject:highest_count_shape_id];
-    maxcount = 0;
-    NSString *second_highest_count_shape_id;
-    for (NSString *shape_id in unique_shape_ids){
-        if (maxcount<[shape_ids countForObject:shape_id]) {
-            maxcount = [shape_ids countForObject:shape_id];
-            second_highest_count_shape_id = shape_id;
-        }
-    }
-    [unique_shape_ids removeAllObjects];
-    [unique_shape_ids addObject:highest_count_shape_id];
-    if (second_highest_count_shape_id)[unique_shape_ids addObject:second_highest_count_shape_id];
-    }*/
     self.shape_lt = nil;
     self.shape_lon = nil;
     for (NSString *shapeID in unique_shape_ids){
-    //NSString *shapeID = [unique_shape_ids objectAtIndex:0];
-    // Here I am fetching the shape_pt_lat and shape_pt_long from core data entity shapes, based on the shapeID I got above
-    //NSLog(@"Shape_ids are %@",shapeID);
     NSMutableArray *shapeCoordinates = [[NSMutableArray alloc]init];
     NSEntityDescription *shapesEntity = [NSEntityDescription entityForName:@"Shapes"
                                                     inManagedObjectContext:self.managedObjectContext];
@@ -297,7 +267,6 @@ if (!self.refreshPressed){
     [fetchRequest setEntity:shapesEntity];
     [fetchRequest setPredicate:shapePredicate];
     NSArray *fetchedShapes = [self.managedObjectContext executeFetchRequest:fetchRequest error:NULL];
-    //NSLog(@"number of shape points is %d",[fetchedShapes count]);
         for (NSManagedObject *shape in fetchedShapes){
             if([[shape valueForKey:@"shape_id"] isEqualToString:shapeID]){
             [self.shape_lt addObject:[shape valueForKey:@"shape_pt_lat"]];
@@ -345,9 +314,7 @@ if (!self.refreshPressed){
 {
     self.routeName.text = favoriteRoute;
     [self showVehicles:sender];    
-    [self.navigationController popToViewController:self animated:YES];
-    //[self.tabBarController setSelectedIndex:0];
-        
+    [self.navigationController popToViewController:self animated:YES];        
 
 }
 
@@ -364,7 +331,7 @@ if (!self.refreshPressed){
     return annotations;
 }
 
-
+// This is a required method for the RefreshDelegate Protocol that is called when the refresh button is pressed in the mapview showing buses
 - (NSArray *)refreshedAnnotations:(NSString *)withRoute :(MapViewController *)sender
 {
     self.refreshPressed = YES;
@@ -380,6 +347,7 @@ if (!self.refreshPressed){
 }
 
 
+// preparing to segue to the map to show the vehicles
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"show on map"]){

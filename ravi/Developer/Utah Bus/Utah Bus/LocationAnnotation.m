@@ -4,7 +4,7 @@
 //
 //  Created by Ravi Alla on 8/6/12.
 //  Copyright (c) 2012 Ravi Alla. All rights reserved.
-//
+// custom annotations
 
 #import "LocationAnnotation.h"
 #import "UtaFetcher.h"

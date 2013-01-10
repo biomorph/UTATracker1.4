@@ -4,7 +4,7 @@
 //
 //  Created by Ravi Alla on 8/13/12.
 //  Copyright (c) 2012 Ravi Alla. All rights reserved.
-//
+// This is for the favorites view controller to display bookmarked favorite buses and stops
 
 #import <UIKit/UIKit.h>
 

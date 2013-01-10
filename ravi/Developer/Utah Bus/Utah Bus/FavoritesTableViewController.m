@@ -4,7 +4,7 @@
 //
 //  Created by Ravi Alla on 8/13/12.
 //  Copyright (c) 2012 Ravi Alla. All rights reserved.
-//
+//  This is for the favorites view controller to display bookmarked favorite buses and stops
 
 #import "FavoritesTableViewController.h"
 #import "UTAViewController.h"
@@ -57,13 +57,6 @@
 {
     [super viewDidLoad];
     [self.tabBarController setDelegate:self];
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
@@ -73,11 +66,10 @@
     if ([defaults objectForKey:@"favorite.stops"])self.favoriteStops = [[defaults objectForKey:@"favorite.stops"]mutableCopy];
     [self.tableView reloadData];
 }
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -179,22 +171,6 @@
 }
 
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -214,6 +190,8 @@
         [self showBuses:favoriteStop];
     }
 }
+
+// check internet status
 -(void) checkNetworkStatus:(NSNotification *)notice
 {
     self.internetActive = YES;
@@ -224,13 +202,14 @@
     }
     
 }
+
+// when your favorite stop is selected this method is called to show you buses arriving at the stop
 - (void) showBuses:(NSString *)atStop
 {
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [spinner startAnimating];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     NSString *url = [NSString stringWithFormat:@"http://api.rideuta.com/SIRI/SIRI.svc/StopMonitor?stopid=%@&minutesout=30&onwardcalls=true&filterroute=&usertoken=%@",atStop,UtaAPIKey];
-    //NSLog(@"url is %@",url);
     dispatch_queue_t xmlGetter = dispatch_queue_create("UTA xml getter", NULL);
     dispatch_async(xmlGetter, ^{
         Reachability *reachability = [Reachability reachabilityForInternetConnection];

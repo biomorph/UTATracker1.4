@@ -4,7 +4,7 @@
 //
 //  Created by Ravi Alla on 8/6/12.
 //  Copyright (c) 2012 Ravi Alla. All rights reserved.
-//
+//  Displays the map to show vehicles that are being tracked
 
 #import "MapViewController.h"
 #import "LocationAnnotation.h"
@@ -106,30 +106,7 @@
     [self.mapView setRegion:self.defaultZoom animated:YES];
 }
    
-// This is where i am making an array of coordinates to make an MKPolyLine out of
-   /* NSInteger numberofSteps = [self.shape_lt count];
-    //NSLog(@"number of shape points is %d",numberofSteps);
-    NSMutableArray *arrayOfCoordinates = [NSMutableArray arrayWithCapacity:numberofSteps];
-    for (NSInteger index = 0; index <numberofSteps; index++){
-        float latitude = [[self.shape_lt objectAtIndex:index]floatValue];
-        float longitude = [[self.shape_lon objectAtIndex:index]floatValue];
-        CLLocation *newLocation = [[CLLocation alloc]initWithLatitude:latitude longitude:longitude];
-        [arrayOfCoordinates addObject:newLocation];
-    }
-    CLLocation *firstLocation;
-    if ([arrayOfCoordinates count]) firstLocation= [arrayOfCoordinates objectAtIndex:0];
-    NSArray *orderedArrayOfCoordinates = [arrayOfCoordinates sortedArrayUsingComparator:^(id a, id b) {
-        CLLocationDistance distanceA = [a distanceFromLocation:firstLocation];
-        CLLocationDistance distanceB = [b distanceFromLocation:firstLocation];
-        if (distanceA < distanceB)return NSOrderedAscending;
-        else if (distanceA > distanceB) return NSOrderedDescending;
-        else return NSOrderedSame;
-    }];
-    CLLocationCoordinate2D coordinates [numberofSteps];
-    for (NSInteger index = 0; index <numberofSteps; index++){
-       if ([orderedArrayOfCoordinates count]) coordinates[index]=[[orderedArrayOfCoordinates objectAtIndex:index] coordinate];
-    }*/
-    
+// creating a polyline for each route map and adding it to the map
     if (self.dictOfShapeArrays){
         for (NSString *shapeID in self.dictOfShapeArrays){
             NSArray *shapeCoordinates = [self.dictOfShapeArrays valueForKey:shapeID];
@@ -175,6 +152,7 @@
 
 }
 
+// refresh the map when the refresh button is pressed, I had to exclude running the refresh on another thread because the annotations were not being loaded properly..work around for now
 - (void)refreshMap:(id)sender {
     self.refreshPressed = YES;
     NSString *route = [self.vehicleInfo objectForKey:LINE_NAME];
@@ -317,6 +295,7 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
+
 - (void) viewWillAppear:(BOOL)animated
 {
     LocationAnnotation *la = (LocationAnnotation *) [self.annotations lastObject];

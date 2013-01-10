@@ -4,7 +4,7 @@
 //
 //  Created by Ravi Alla on 8/13/12.
 //  Copyright (c) 2012 Ravi Alla. All rights reserved.
-//
+// This is for view which displays bus stops at current location
 
 #import "StopMapViewController.h"
 #import "LocationAnnotation.h"
@@ -53,6 +53,8 @@
     }
     return self;
 }
+
+//called whenever the annotations are changed or mapview changes
 -(void) updateMapView
 {
     if ([self.mapView.annotations count]>0){
@@ -162,6 +164,7 @@
     // Release any retained subviews of the main view.
 }
 
+//customizing my annotations
 - (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
     if (![annotation isKindOfClass:[MKUserLocation class]]){
@@ -179,12 +182,13 @@
 }
 else return  nil;
 }
+
+//checking if internet is active
 -(void) checkNetworkStatus:(NSNotification *)notice
 {
     self.internetActive = YES;
     NetworkStatus internetStatus = [self.internetReachable currentReachabilityStatus];
     if (internetStatus == NotReachable){
-        //NSLog(@"The internet is down.");
         self.internetActive = NO;
     }
     
@@ -203,6 +207,8 @@ else return  nil;
         [self showBuses:stopID];
     }
 }
+
+//shows buses that will service the current stop in the next hour
 - (void) showBuses:(NSString *)atStop
 {
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -214,7 +220,6 @@ else return  nil;
     self.navigationItem.rightBarButtonItems = navigationItems;
     self.navigationItem.titleView = spinner;
     NSString *url = [NSString stringWithFormat:@"http://api.rideuta.com/SIRI/SIRI.svc/StopMonitor?stopid=%@&minutesout=60&onwardcalls=true&filterroute=&usertoken=%@",atStop,UtaAPIKey];
-    //NSLog(@"url is %@",url);
     dispatch_queue_t xmlGetter = dispatch_queue_create("UTA xml getter", NULL);
     dispatch_async(xmlGetter, ^{
         Reachability *reachability = [Reachability reachabilityForInternetConnection];
@@ -245,40 +250,26 @@ else return  nil;
     
 }
 
+//refresh map to show stops around center of the current view area of the map if refresh button is pressed or around current location if GPS button is pressed
 - (void) refreshStopMap:(UIBarButtonItem*)sender
 {
     CLLocation *currentLocation = [[CLLocation alloc]initWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude];
     if (![sender.title isEqualToString:@"GPS"]){
-        //dispatch_queue_t xmlGetter = dispatch_queue_create("UTA xml getter", NULL);
-        //dispatch_async(xmlGetter, ^{
             [self.stopMapDelegate refreshStopMap:YES];
             self.annotations = [self.stopMapDelegate refreshedStopAnnotations:currentLocation :self];
             CLLocationCoordinate2D center = [self.mapView centerCoordinate];
             [self.mapView setCenterCoordinate:center];
-            //NSLog(@"I'm in refresh");
             [self updateMapView];
-            //dispatch_async(dispatch_get_main_queue(), ^{
-                 //self.typeDetailDisclosure = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-           // });
-        //});
-        //dispatch_release(xmlGetter);
-        
-    }
+                }
     else {
-        //dispatch_queue_t xmlGetter = dispatch_queue_create("UTA xml getter", NULL);
-        //dispatch_async(xmlGetter, ^{
             [self.stopMapDelegate refreshStopMap:NO];
             self.annotations = [self.stopMapDelegate refreshedStopAnnotations:currentLocation :self];
-            //dispatch_async(dispatch_get_main_queue(), ^{
-            //});
-        //});
-        //dispatch_release(xmlGetter);
+
     }
-    //self.typeDetailDisclosure = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 
 }
 
-
+//preparing to segue to StopInfoTableViewController
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"show stop info"]){

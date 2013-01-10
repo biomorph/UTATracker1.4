@@ -4,7 +4,7 @@
 //
 //  Created by Ravi Alla on 8/13/12.
 //  Copyright (c) 2012 Ravi Alla. All rights reserved.
-//
+// This is for the closest stop tab
 
 #import "UTAStopMonitoringViewController.h"
 #import "UtaFetcher.h"
@@ -81,6 +81,8 @@
     }
     return _locationManager;
 }
+
+// checking if internet is active or not
 -(void) checkNetworkStatus:(NSNotification *)notice
 {
     self.internetActive = YES;
@@ -91,6 +93,8 @@
     }
     
 }
+
+// finds stops that are close to the current location when button is pressed, if a route is entered it filters to show stops that serve the route
 - (IBAction)findStops:(id)sender {
     
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -149,6 +153,8 @@
     dispatch_release(xmlGetter);
     
 }
+
+// This segment of code is to give suggestions for route numbers as the user is typing
 /*- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     self.autocompleteTableView.hidden = NO;
@@ -156,10 +162,10 @@
     substring = [substring stringByReplacingCharactersInRange:range withString:string];
     [self searchAutocompleteEntriesWithSubstring:substring];
     return YES;
-}*/
+}
 
 // presents autofil options in a tableview based on the typed string
-/*- (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring {
+- (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring {
     
     // Put anything that starts with this substring into the autocompleteUrls array
     // The items in this array is what will show up in the table view
@@ -204,11 +210,11 @@
     self.routeFilter.text = selectedCell.textLabel.text;
     self.autocompleteTableView.hidden = YES;
     
-}*/
+}
 
 
 
-/*- (void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {
+- (void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {
     for (UIView* view in self.view.subviews) {
         if ([view isKindOfClass:[UITextField class]])
             [view resignFirstResponder];
@@ -231,6 +237,7 @@
     self.locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
     self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters; // 10 m
     [self.locationManager startUpdatingLocation];
+    //This part loads all known routes so I can autofil as user starts typing it in.
     /*NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults objectForKey:@"utabus.availableroutes"]){
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -257,6 +264,8 @@
     self.routeFilter.delegate = self;*/
 	// Do any additional setup after loading the view.
 }
+
+// a convenience method to return my annotations
 - (NSArray *) mapAnnotations
 {
     NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:[self.stopInfoArray count]];
@@ -267,6 +276,7 @@
     return annotations;
 }
 
+// preparing to segue to the map to show stops on it.
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"show stops on map"]){
@@ -280,6 +290,7 @@
     }
 }
 
+// This is a required method for the protocol refreshStopMapDelegate. It is called whenever the refresh button is pushed in the stop map so I can fetch new stops.
 - (NSArray *) refreshedStopAnnotations:(CLLocation *)forLocation :(StopMapViewController *)sender
 {
     self.mapLocation = forLocation;
@@ -304,10 +315,12 @@
     self.refreshStopMapPressed = NO;
    return [self mapAnnotations];
 }
+
 - (void) refreshStopMap:(BOOL)pressed
 {
     self.refreshStopMapPressed = pressed;
 }
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus:) name:kReachabilityChangedNotification object:nil];
@@ -316,6 +329,8 @@
     [self.internetReachable startNotifier];
     
 }
+
+// dismisses the keyboard if touch occurs outside the keyboard
 - (void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {
     UITouch *touch = [[event allTouches] anyObject];
     if ([self.routeFilter isFirstResponder] && [touch view] != self.routeFilter) {
@@ -323,6 +338,7 @@
     }
     [super touchesBegan:touches withEvent:event];
 }
+
 - (void)viewDidUnload
 {
     [self setRouteFilter:nil];

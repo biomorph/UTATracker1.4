@@ -4,7 +4,7 @@
 //
 //  Created by Ravi Alla on 8/21/12.
 //  Copyright (c) 2012 Ravi Alla. All rights reserved.
-//
+// For the help tab
 
 #import <UIKit/UIKit.h>
 
