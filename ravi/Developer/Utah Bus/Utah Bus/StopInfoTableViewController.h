@@ -10,6 +10,7 @@
 @protocol RefreshStopDelegate
 - (NSArray *) refreshedStopInfo : (NSString *)forStop : (StopInfoTableViewController *) sender;
 @end
+
 @interface StopInfoTableViewController : UITableViewController
 @property (nonatomic, strong) NSArray *stopDescriptionForTable;
 @property (nonatomic, strong) NSDictionary *stopInfo;

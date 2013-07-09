@@ -11,16 +11,18 @@
 #import "UtaFetcher.h"
 #import "StopInfoTableViewController.h"
 #import "UTAStopMonitoringViewController.h"
+#import "StopListTableViewController.h"
 
-@interface StopMapViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>
+@interface StopMapViewController ()<MKMapViewDelegate, CLLocationManagerDelegate,stopInfoDelegate>
 @property (nonatomic, strong) UIButton *typeDetailDisclosure;
-@property (nonatomic, strong) NSArray *stopDescription;
+@property (nonatomic, strong) NSArray *stopList;
 @property (nonatomic, strong) NSArray *vehicleInfoArray;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) UtaFetcher *utaFetcher;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property BOOL internetActive;
 @property (strong, nonatomic) NSArray *annotations;
+@property BOOL calledByShowStopInfoForStopID;
 
 
 @end
@@ -34,6 +36,8 @@
 @synthesize vehicleInfoArray = _vehicleInfoArray;
 @synthesize stopMapDelegate = _stopMapDelegate;
 @synthesize annotations = _annotations;
+@synthesize stopList = _stopList;
+@synthesize calledByShowStopInfoForStopID = _calledByShowStopInfoForStopID;
 
 - (NSArray *) vehicleInfoArray
 {
@@ -102,7 +106,7 @@
         zoomRegion.span.longitudeDelta = 0.8;
         [self.mapView setRegion:zoomRegion animated:YES];
     }
-   
+ self.stopList = self.annotations;  
 }
 - (void) setMapView:(MKMapView *)mapView
 {
@@ -113,15 +117,15 @@
 - (void) setAnnotations:(NSArray *)annotations
 {
     _annotations = annotations;
-    [self updateMapView];
+    //[self updateMapView];
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
     self.navigationItem.title = @"Closest Stops";
-    UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 150, 40)];
+    UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 100, 40)];
     tlabel.text=self.navigationItem.title;
-    tlabel.textColor=[UIColor whiteColor];
+    tlabel.textColor=[UIColor blackColor];
     tlabel.backgroundColor =[UIColor clearColor];
     tlabel.adjustsFontSizeToFitWidth=YES;
     [tlabel setTextAlignment:NSTextAlignmentCenter];
@@ -137,9 +141,13 @@
     bi = [[UIBarButtonItem alloc] initWithTitle:@"GPS" style:UIBarButtonItemStylePlain target:self action:@selector(refreshStopMap:)];
     bi.style = UIBarButtonItemStyleBordered;
     [buttons addObject:bi];
+    bi = [[UIBarButtonItem alloc] initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector(showStopList)];
+    bi.style = UIBarButtonItemStyleBordered;
+    [buttons addObject:bi];
         // Add buttons to toolbar and toolbar to nav bar.
     self.navigationItem.rightBarButtonItems=buttons;
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -155,7 +163,7 @@
     self.internetReachable = [Reachability reachabilityForInternetConnection];
     [self.internetReachable startNotifier];
 	// Do any additional setup after loading the view.
-    
+    //self.stopList = self.annotations;
 }
 
 - (void)viewDidUnload
@@ -193,6 +201,7 @@ else return  nil;
     }
     
 }
+
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
     self.typeDetailDisclosure = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
@@ -208,7 +217,7 @@ else return  nil;
     }
 }
 
-//shows buses that will service the current stop in the next hour
+//shows buses that will service the current stop in the next half hour
 - (void) showBuses:(NSString *)atStop
 {
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -219,7 +228,7 @@ else return  nil;
     [navigationItems addObject:bi];
     self.navigationItem.rightBarButtonItems = navigationItems;
     self.navigationItem.titleView = spinner;
-    NSString *url = [NSString stringWithFormat:@"http://api.rideuta.com/SIRI/SIRI.svc/StopMonitor?stopid=%@&minutesout=60&onwardcalls=true&filterroute=&usertoken=%@",atStop,UtaAPIKey];
+    NSString *url = [NSString stringWithFormat:@"http://api.rideuta.com/SIRI/SIRI.svc/StopMonitor?stopid=%@&minutesout=30&onwardcalls=true&filterroute=&usertoken=%@",atStop,UtaAPIKey];
     dispatch_queue_t xmlGetter = dispatch_queue_create("UTA xml getter", NULL);
     dispatch_async(xmlGetter, ^{
         Reachability *reachability = [Reachability reachabilityForInternetConnection];
@@ -242,8 +251,11 @@ else return  nil;
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             NSInteger numberofcontrollers = [self.navigationController.viewControllers count];
-            if (numberofcontrollers <3)[self performSegueWithIdentifier:@"show stop info" sender:self];
+            if (numberofcontrollers <3 &&!self.calledByShowStopInfoForStopID){
+                [self performSegueWithIdentifier:@"show stop info" sender:self];
+            }
             [spinner hidesWhenStopped];
+            self.calledByShowStopInfoForStopID = NO;
         });
     });
     dispatch_release(xmlGetter);
@@ -259,23 +271,36 @@ else return  nil;
             self.annotations = [self.stopMapDelegate refreshedStopAnnotations:currentLocation :self];
             CLLocationCoordinate2D center = [self.mapView centerCoordinate];
             [self.mapView setCenterCoordinate:center];
-            [self updateMapView];
                 }
     else {
             [self.stopMapDelegate refreshStopMap:NO];
             self.annotations = [self.stopMapDelegate refreshedStopAnnotations:currentLocation :self];
 
     }
-
+[self updateMapView];
 }
 
+- (NSArray *) showstopInfo:(NSString *)forStopID
+{
+    self.calledByShowStopInfoForStopID = YES;
+    [self showBuses:forStopID];
+    return self.vehicleInfoArray;
+}
+- (void) showStopList {
+    [self performSegueWithIdentifier:@"show stop list" sender:self];
+    
+}
 //preparing to segue to StopInfoTableViewController
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"show stop info"]){
         [segue.destinationViewController setStopDescriptionForTable:self.vehicleInfoArray];
         [segue.destinationViewController setStopInfo:self.stopInfo];
-
+        
+    }
+    if ([segue.identifier isEqualToString:@"show stop list"]){
+        [segue.destinationViewController setStopInfoDictArray:self.stopList];
+        [segue.destinationViewController setStopInfoDelegate:self];
     }
 }
 

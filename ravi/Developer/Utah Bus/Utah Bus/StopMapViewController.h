@@ -12,7 +12,7 @@
 @protocol RefreshStopMapDelegate <NSObject>
 
 
-- (NSArray *) refreshedStopAnnotations: (CLLocation*) forLocation: (StopMapViewController*) sender;
+- (NSArray *) refreshedStopAnnotations : (CLLocation*) forLocation : (StopMapViewController*) sender;
 - (void) refreshStopMap:(BOOL)pressed;
 
 @end

@@ -235,7 +235,7 @@ if (!self.refreshPressed){
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Routes"
                                               inManagedObjectContext:self.managedObjectContext];
-    NSPredicate *routePredicate = [NSPredicate predicateWithFormat:@"route_short_name=%@",self.routeName.text];
+    NSPredicate *routePredicate = [NSPredicate predicateWithFormat:@"route_short_name=[c]%@",self.routeName.text];
     [fetchRequest setEntity:entity];
     [fetchRequest setPredicate:routePredicate];
     NSArray *fetchedRoutes = [self.managedObjectContext executeFetchRequest:fetchRequest error:NULL];
@@ -314,7 +314,7 @@ if (!self.refreshPressed){
 {
     self.routeName.text = favoriteRoute;
     [self showVehicles:sender];    
-    [self.navigationController popToViewController:self animated:YES];        
+    [self.navigationController popToViewController:self animated:YES];
 
 }
 
@@ -355,6 +355,7 @@ if (!self.refreshPressed){
         [segue.destinationViewController setShape_lon:self.shape_lon];
         [segue.destinationViewController setShape_lt:self.shape_lt];
         [segue.destinationViewController setDictOfShapeArrays:self.dictOfShapeArrays];
+        [segue.destinationViewController setTitle:self.routeName.text];
         [self.tabBarController setSelectedIndex:0];
         [segue.destinationViewController setRefreshDelegate:self];
         self.shape_lon = nil;

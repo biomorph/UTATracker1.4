@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0440"
+   LastUpgradeVersion = "0460"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -60,8 +60,8 @@
       <AdditionalOptions>
       </AdditionalOptions>
       <LocationScenarioReference
-         identifier = "San Francisco, CA, USA"
-         referenceType = "1">
+         identifier = "../../Utah Bus/Salt Lake City.gpx"
+         referenceType = "0">
       </LocationScenarioReference>
       <RoutingCoverageFileReference
          identifier = "../../UTAService.geojson">

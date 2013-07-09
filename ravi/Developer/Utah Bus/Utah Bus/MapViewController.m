@@ -24,6 +24,7 @@
 @property (nonatomic) MKCoordinateRegion currentZoom;
 @property (nonatomic, strong) NSString *direction;
 @property (nonatomic) BOOL refreshPressed;
+@property (nonatomic, strong) NSTimer* refreshTimer;
 
 @end
 
@@ -116,7 +117,6 @@
                 CLLocationCoordinate2D shapeCoordinate = [shapeLocationCoordinate coordinate];
                 coordinates [[shapeCoordinates indexOfObject:shapeLocationCoordinate]] = shapeCoordinate;
             }
-                
             MKPolyline *polyLine = [MKPolyline polylineWithCoordinates:coordinates count:[shapeCoordinates count]];
             polyLine.title = shapeID;
             [self.mapView addOverlay:polyLine];
@@ -132,48 +132,42 @@
         direction = [annotation subtitle];
     if (![annotation isKindOfClass:[MKUserLocation class]]){
             MKPinAnnotationView *aView =(MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Bus Coordinates"];
-            aView = nil;//[[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"Bus Coordinates"];
+            aView = nil;
             if (!aView){
                 aView = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"Bus Coordinates"];
                 aView.canShowCallout = YES;
             }
             aView.canShowCallout = YES;
-            if ([direction isEqualToString:[self.directionOfVehicle objectAtIndex:0]]){
+            if ([direction isEqualToString:[self.directionOfVehicle objectAtIndex:0]]||[direction isEqualToString:@"SOUTHBOUND"]){
             aView.pinColor = MKPinAnnotationColorPurple;
+                if ([direction length]==0){
+                    aView.pinColor=MKPinAnnotationColorGreen;
+                    }
             }
+         
             else aView.pinColor = MKPinAnnotationColorRed;
             aView.annotation = annotation;
             aView.leftCalloutAccessoryView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
             self.typeDetailDisclosure = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-            aView.rightCalloutAccessoryView =self.typeDetailDisclosure;
+            aView.rightCalloutAccessoryView =nil;
             return aView;
             }
     else return nil;
-
 }
 
-// refresh the map when the refresh button is pressed, I had to exclude running the refresh on another thread because the annotations were not being loaded properly..work around for now
+// refresh the map when the refresh button is pressed
 - (void)refreshMap:(id)sender {
     self.refreshPressed = YES;
     NSString *route = [self.vehicleInfo objectForKey:LINE_NAME];
-    //self.annotations = [self.refreshDelegate refreshedAnnotations:route :self];
-    //dispatch_queue_t xmlGetter = dispatch_queue_create("UTA xml getter", NULL);
-    //dispatch_async(xmlGetter, ^{
-       //self.annotations = nil;
+    dispatch_queue_t xmlGetter = dispatch_queue_create("UTA xml getter", NULL);
+    dispatch_async(xmlGetter, ^{
         self.currentZoom = self.mapView.region;
         self.annotations = [self.refreshDelegate refreshedAnnotations:route :self];
-        for (LocationAnnotation *annotation in self.annotations){
-            if ([self.mapView.annotations count]>0)[self.mapView removeAnnotation:annotation];
-        }
         [self.mapView addAnnotations:self.annotations];
-        CLLocationCoordinate2D center = [self.mapView centerCoordinate];
-        [self.mapView setCenterCoordinate:center];
-        
-        //dispatch_async(dispatch_get_main_queue(), ^{
-        //});
-    //});
-    //dispatch_release(xmlGetter);
-    //self.typeDetailDisclosure = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        dispatch_async(dispatch_get_main_queue(), ^{
+        });
+    });
+    dispatch_release(xmlGetter);
     self.refreshPressed = NO;
 }
 
@@ -196,6 +190,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *favorites = [[defaults objectForKey:@"favorite.routes"] mutableCopy];
     NSArray *routeInfo = [NSArray arrayWithObjects:[self.vehicleInfo objectForKey:PUBLISHED_LINE_NAME],[self.vehicleInfo objectForKey:LINE_NAME],nil];
+    if ([self.vehicleInfo count]==0)routeInfo = [NSArray arrayWithObjects:self.navigationItem.title,self.navigationItem.title,nil];
     if (!favorites) favorites = [NSMutableArray array];
     //add only if the routeInfo returns a short and long name, the route count is checking for that here
     if (favorites && ![favorites containsObject:routeInfo]&&[routeInfo count]!=0) [favorites addObject:routeInfo];
@@ -203,13 +198,13 @@
     [defaults synchronize];
 }
 
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+/*- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
     self.vehicleInfo = [(LocationAnnotation *)view.annotation vehicleInfo];
     if (self.vehicleInfo){
         [self performSegueWithIdentifier:@"show timetable" sender:view.rightCalloutAccessoryView];
         }
-}
+}*/
 
 
 // assigning a colored dot based on the current progress of the bus
@@ -278,13 +273,17 @@
     [self.locationManager startUpdatingLocation];
     [self.mapView setShowsUserLocation:YES];
 }
+
+- (void)showTimeTable:(id)sender
+{
+    
+        [self performSegueWithIdentifier:@"show timetable" sender:sender];
+
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self updateLocation];
-    //if (self.shape_lon)self.shape_lon = nil;
-    //if (self.shape_lt) self.shape_lt = nil;
-	// Do any additional setup after loading the view.
 }
 
 - (void)viewDidUnload
@@ -293,22 +292,27 @@
     [self setAnnotations:nil];
     [self setAddToFaves:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    LocationAnnotation *la = (LocationAnnotation *) [self.annotations lastObject];
-    NSString *title= la.title;
-    self.navigationItem.title = title;
-    UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 150, 40)];
-    tlabel.text=self.navigationItem.title;
+    //LocationAnnotation *la = (LocationAnnotation *) [self.annotations lastObject];
+    //if (la.title) self.navigationItem.title = la.title;
+     UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 100, 40)];
     tlabel.textColor=[UIColor whiteColor];
     tlabel.backgroundColor =[UIColor clearColor];
-    tlabel.adjustsFontSizeToFitWidth=YES;
-    [tlabel setTextAlignment:NSTextAlignmentCenter];
+    tlabel.numberOfLines=0;
+    tlabel.lineBreakMode=UILineBreakModeWordWrap;
+    [tlabel setTextAlignment:NSTextAlignmentLeft];
+    tlabel.text=self.navigationItem.title;
+    /*CGSize maxLabelSize = CGSizeMake(100, 40);
+    CGSize exptLabelSize = [self.navigationItem.title sizeWithFont:[UIFont fontWithName:@"Helvetica" size:10] constrainedToSize:maxLabelSize lineBreakMode:UILineBreakModeWordWrap];
+    CGRect labelFrame = tlabel.frame;
+    labelFrame.size.height = exptLabelSize.height;
+    tlabel.frame = labelFrame;
     self.navigationItem.titleView=tlabel;
-    NSMutableArray *buttons = [[NSMutableArray alloc] initWithCapacity:3];
+    [tlabel sizeToFit];*/
+        NSMutableArray *buttons = [[NSMutableArray alloc] initWithCapacity:3];
     
     // Create a standard refresh button.
     UIBarButtonItem *bi = [[UIBarButtonItem alloc]
@@ -318,10 +322,20 @@
     bi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(addToFavorites:)];
     bi.style = UIBarButtonItemStyleBordered;
     [buttons addObject:bi];
+    bi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(showTimeTable:)];
+    bi.style = UIBarButtonItemStyleBordered;
+    [buttons addObject:bi];
     
     // Add buttons to toolbar and toolbar to nav bar.
     self.navigationItem.rightBarButtonItems=buttons;
 }
+- (void) viewDidAppear:(BOOL)animated
+{
+    [self refreshMap:self];
+   self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval: 30.0 target: self
+                                                      selector: @selector(refreshMap:) userInfo: nil repeats: YES];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;

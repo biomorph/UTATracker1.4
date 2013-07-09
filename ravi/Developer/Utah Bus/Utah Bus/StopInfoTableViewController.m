@@ -9,10 +9,12 @@
 #import "StopInfoTableViewController.h"
 #import "UtaFetcher.h"
 #import "FavoritesTableViewController.h"
+#import "timetableViewController.h"
 
 @interface StopInfoTableViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *dataDisplayArray;
 @property (nonatomic, strong) NSString *route;
+@property (nonatomic, strong) timetableViewController *ttvc;
 @end
 
 @implementation StopInfoTableViewController
@@ -24,6 +26,11 @@
 @synthesize stopID = _stopID;
 @synthesize stopName = _stopName;
 
+- (timetableViewController *)ttvc
+{
+    if (!_ttvc) _ttvc = [[timetableViewController alloc]init];
+    return _ttvc;
+}
 
 
 - (NSMutableArray *) dataDisplayArray
@@ -152,7 +159,8 @@ return cell;
 {
     NSDictionary *stop = [self.stopDescriptionForTable objectAtIndex:indexPath.section];
     self.route = [stop objectForKey:LINE_NAME];
-    if (self.route)[self performSegueWithIdentifier:@"show timetable" sender:self.tableView];
+    if (self.route)[self performSegueWithIdentifier:@"show timetable" sender:self ];
+    
 }
 
 

@@ -43,13 +43,13 @@
     self.refresh = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshpage)];
     self.refresh.style = UIBarButtonItemStyleBordered;
     [buttons addObject:self.refresh];
-    self.UTATransit = [[UIBarButtonItem alloc] initWithTitle:@"UTA" style:UIBarButtonItemStyleBordered target:self action:@selector(UTAtransit)];
-    self.googleTransit = [[UIBarButtonItem alloc] initWithTitle:@"Google" style:UIBarButtonItemStyleBordered target:self action:@selector(viewDidLoad)];
+    //self.UTATransit = [[UIBarButtonItem alloc] initWithTitle:@"UTA" style:UIBarButtonItemStyleBordered target:self action:@selector(UTAtransit)];
+    //self.googleTransit = [[UIBarButtonItem alloc] initWithTitle:@"Google" style:UIBarButtonItemStyleBordered target:self action:@selector(viewDidLoad)];
     // Add buttons to toolbar and toolbar to nav bar.
     self.navigationItem.leftBarButtonItems=buttons;
     [buttons removeAllObjects];
-    [buttons addObject:self.UTATransit];
-    [buttons addObject:self.googleTransit];
+    //[buttons addObject:self.UTATransit];
+    //[buttons addObject:self.googleTransit];
     
     self.navigationItem.rightBarButtonItems = buttons;
     
@@ -72,13 +72,13 @@
 }
 
 // load UTA's route planning website when UTA button is pressed
-- (void)UTAtransit
+/*- (void)UTAtransit
 {
     NSString *googleTransitUrlString = [NSString stringWithFormat:@"http://www.rideuta.com/ridinguta/tripplanner/planner.aspx"];
     NSURL *googleTransitURL = [NSURL URLWithString:googleTransitUrlString];
     [self.routePlannerWebView loadRequest:[NSURLRequest requestWithURL:googleTransitURL]];
     [self updateButtons];
-}
+}*/
 - (void) updateButtons
 {
     self.back.enabled = self.routePlannerWebView.canGoBack;

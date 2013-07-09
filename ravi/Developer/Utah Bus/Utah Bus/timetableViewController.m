@@ -24,6 +24,7 @@
     }
     return self;
 }
+
 - (void)viewDidLoad
 {
     self.timetableView.delegate = self;
@@ -42,6 +43,7 @@
     NSURL *timetableURL = [NSURL URLWithString:timetableUrlString];
     [self.timetableView loadRequest:[NSURLRequest requestWithURL:timetableURL]];
     
+    
 }
 - (void) webViewDidStartLoad:(UIWebView *)webView
 {
@@ -59,7 +61,6 @@
     [self.spinner stopAnimating];
     
 }
-
 - (void)viewDidUnload
 {
     [self setSpinner:nil];

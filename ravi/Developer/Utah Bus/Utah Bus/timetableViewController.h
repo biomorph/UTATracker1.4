@@ -7,6 +7,7 @@
 // To display a UIWebview with the timetable of a selected bus, queries UTA's website
 
 #import <UIKit/UIKit.h>
+#import "StopInfoTableViewController.h"
 
 @interface timetableViewController : UIViewController
 @property (nonatomic, strong) IBOutlet UIWebView *timetableView;
