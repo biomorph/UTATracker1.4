@@ -118,7 +118,7 @@
     [fetchRequest setEntity:entity];
     [fetchRequest setPredicate:routePredicate];
     NSArray *fetchedRoutes = [self.managedObjectContext executeFetchRequest:fetchRequest error:NULL];
-    NSString *urlString = [NSString string];
+    NSString *urlString;// = [NSString string];
     if ([fetchedRoutes count] >0) {
          urlString = [NSString stringWithFormat:@"http://api.rideuta.com/SIRI/SIRI.svc/CloseStopmonitor?latitude=%f&longitude=%f&route=%@&numberToReturn=25&usertoken=%@",latitude,longitude, self.routeFilter.text,UtaAPIKey];
     }

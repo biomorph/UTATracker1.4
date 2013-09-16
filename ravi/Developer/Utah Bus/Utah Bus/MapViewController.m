@@ -110,7 +110,7 @@
 // creating a polyline for each route map and adding it to the map
     if (self.dictOfShapeArrays){
         for (NSString *shapeID in self.dictOfShapeArrays){
-            NSArray *shapeCoordinates = [self.dictOfShapeArrays valueForKey:shapeID];
+            NSMutableArray *shapeCoordinates = [self.dictOfShapeArrays valueForKey:shapeID];
             int numberofSteps = [shapeCoordinates count];
             CLLocationCoordinate2D coordinates [numberofSteps];
             for (CLLocation *shapeLocationCoordinate in shapeCoordinates){
@@ -189,7 +189,7 @@
 - (IBAction)addToFavorites:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *favorites = [[defaults objectForKey:@"favorite.routes"] mutableCopy];
-    NSArray *routeInfo = [NSArray arrayWithObjects:[self.vehicleInfo objectForKey:PUBLISHED_LINE_NAME],[self.vehicleInfo objectForKey:LINE_NAME],nil];
+    NSArray *routeInfo = [NSArray arrayWithObjects:[self.vehicleInfo objectForKey:PUBLISHED_LINE_NAME],[self.vehicleInfo objectForKey:LINE_NAME],[self.vehicleInfo objectForKey:DIRECTION_OF_VEHICLE],nil];
     if ([self.vehicleInfo count]==0)routeInfo = [NSArray arrayWithObjects:self.navigationItem.title,self.navigationItem.title,nil];
     if (!favorites) favorites = [NSMutableArray array];
     //add only if the routeInfo returns a short and long name, the route count is checking for that here
@@ -248,7 +248,7 @@
     [self updateMapView];
 }
 
-- (void) setAnnotations:(NSArray *)annotations
+- (void) setAnnotations:(NSMutableArray *)annotations
 {
     _annotations = annotations;
     [self updateMapView];
@@ -299,7 +299,7 @@
     //LocationAnnotation *la = (LocationAnnotation *) [self.annotations lastObject];
     //if (la.title) self.navigationItem.title = la.title;
      UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 100, 40)];
-    tlabel.textColor=[UIColor whiteColor];
+    //tlabel.textColor=[UIColor whiteColor];
     tlabel.backgroundColor =[UIColor clearColor];
     tlabel.numberOfLines=0;
     tlabel.lineBreakMode=UILineBreakModeWordWrap;
@@ -332,7 +332,7 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [self refreshMap:self];
-   self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval: 30.0 target: self
+   self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval: 60.0 target: self
                                                       selector: @selector(refreshMap:) userInfo: nil repeats: YES];
 }
 

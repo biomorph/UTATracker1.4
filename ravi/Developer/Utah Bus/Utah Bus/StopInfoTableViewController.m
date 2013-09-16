@@ -73,7 +73,7 @@
     else self.navigationItem.title = self.stopName;
     UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
     tlabel.text=self.navigationItem.title;
-    tlabel.textColor=[UIColor whiteColor];
+    //tlabel.textColor=[UIColor whiteColor];
     tlabel.backgroundColor =[UIColor clearColor];
     tlabel.adjustsFontSizeToFitWidth=YES;
     self.navigationItem.titleView=tlabel;

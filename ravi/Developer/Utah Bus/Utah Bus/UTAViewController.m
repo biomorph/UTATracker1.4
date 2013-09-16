@@ -136,7 +136,7 @@
     [self.view addSubview:self.autocompleteTableView];
     self.routeName.delegate = self;
     self.infoView.hidden = YES;*/
-    UINavigationController *fnvc = [self.tabBarController.viewControllers objectAtIndex:3];
+    UINavigationController *fnvc = [self.tabBarController.viewControllers objectAtIndex:2];
     FavoritesTableViewController *fvc = (FavoritesTableViewController *)[fnvc topViewController];
     [fvc setRouteDelegate:self];
     
@@ -231,7 +231,7 @@
     
     // Here I am fetching routeID from core data entity route, based on the bus typed into the text field. I am also getting the route points so I can pass this to the mapview to plot the route map
 if (!self.refreshPressed){
-    NSString *routeID = [NSString string];
+    NSString *routeID;// = [NSString string];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Routes"
                                               inManagedObjectContext:self.managedObjectContext];

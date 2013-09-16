@@ -23,6 +23,7 @@
 @property BOOL internetActive;
 @property (strong, nonatomic) NSArray *annotations;
 @property BOOL calledByShowStopInfoForStopID;
+@property NSSet *stopSet;
 
 
 @end
@@ -38,6 +39,7 @@
 @synthesize annotations = _annotations;
 @synthesize stopList = _stopList;
 @synthesize calledByShowStopInfoForStopID = _calledByShowStopInfoForStopID;
+@synthesize stopSet = _stopSet;
 
 - (NSArray *) vehicleInfoArray
 {
@@ -106,7 +108,9 @@
         zoomRegion.span.longitudeDelta = 0.8;
         [self.mapView setRegion:zoomRegion animated:YES];
     }
- self.stopList = self.annotations;  
+ self.stopList = self.annotations;
+    self.stopSet = [NSSet setWithArray:self.stopList];
+    self.stopList = [self.stopSet allObjects];
 }
 - (void) setMapView:(MKMapView *)mapView
 {
@@ -114,7 +118,7 @@
     [self updateMapView];
 }
 
-- (void) setAnnotations:(NSArray *)annotations
+- (void) setAnnotations:(NSMutableArray *)annotations
 {
     _annotations = annotations;
     //[self updateMapView];
