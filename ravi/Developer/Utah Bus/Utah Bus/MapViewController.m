@@ -70,6 +70,8 @@
             if (!self.directionOfVehicle)self.directionOfVehicle = [NSMutableArray array];
             if (![self.directionOfVehicle containsObject:[self.vehicleInfo objectForKey:DIRECTION_OF_VEHICLE]]){
                 [self.directionOfVehicle addObject:[self.vehicleInfo objectForKey:DIRECTION_OF_VEHICLE]];
+                NSArray *sortedDirections = [self.directionOfVehicle sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+                self.directionOfVehicle = [sortedDirections mutableCopy];
             }
     }
     NSArray* sortedlatitude = [latitude sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2){
@@ -130,7 +132,7 @@
 {
     NSString *direction = [[NSString alloc]init];
         direction = [annotation subtitle];
-    if (![annotation isKindOfClass:[MKUserLocation class]]){
+        if (![annotation isKindOfClass:[MKUserLocation class]]){
             MKPinAnnotationView *aView =(MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Bus Coordinates"];
             aView = nil;
             if (!aView){
