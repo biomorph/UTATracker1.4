@@ -54,7 +54,7 @@
 		07BB7BB115CC740A007A0531 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BB7BB015CC740A007A0531 /* MapKit.framework */; };
 		07BB7BB715CC74FF007A0531 /* UtaFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BB7BB615CC74FF007A0531 /* UtaFetcher.m */; };
 		07BE44E815E8401400E757BF /* timetableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BE44E715E8401400E757BF /* timetableViewController.m */; };
-		411CBD9317E798E0001EE92D /* GTFS.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 411CBD9217E798E0001EE92D /* GTFS.sqlite */; };
+		4195FE5517E8AA4700E4F317 /* GTFS.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4195FE5417E8AA4700E4F317 /* GTFS.sqlite */; };
 		41A6BA761722117C00C16B4D /* StopListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A6BA741722117C00C16B4D /* StopListTableViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -123,7 +123,7 @@
 		07BB7BB615CC74FF007A0531 /* UtaFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtaFetcher.m; sourceTree = "<group>"; };
 		07BE44E615E8401400E757BF /* timetableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timetableViewController.h; sourceTree = "<group>"; };
 		07BE44E715E8401400E757BF /* timetableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = timetableViewController.m; sourceTree = "<group>"; };
-		411CBD9217E798E0001EE92D /* GTFS.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = GTFS.sqlite; sourceTree = "<group>"; };
+		4195FE5417E8AA4700E4F317 /* GTFS.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = GTFS.sqlite; sourceTree = "<group>"; };
 		41A6BA731722117C00C16B4D /* StopListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopListTableViewController.h; sourceTree = "<group>"; };
 		41A6BA741722117C00C16B4D /* StopListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopListTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,7 +192,7 @@
 		07BB7B9715CC73DA007A0531 /* Utah Bus */ = {
 			isa = PBXGroup;
 			children = (
-				411CBD9217E798E0001EE92D /* GTFS.sqlite */,
+				4195FE5417E8AA4700E4F317 /* GTFS.sqlite */,
 				076737751623EA9B00332ADA /* routeplan.png */,
 				076737761623EA9B00332ADA /* routeplan@2x.png */,
 				073BC80B15EBFFB4002A9519 /* Model.xcdatamodeld */,
@@ -314,7 +314,7 @@
 			files = (
 				07BB7B9C15CC73DA007A0531 /* InfoPlist.strings in Resources */,
 				07BB7BA515CC73DA007A0531 /* MainStoryboard.storyboard in Resources */,
-				411CBD9317E798E0001EE92D /* GTFS.sqlite in Resources */,
+				4195FE5517E8AA4700E4F317 /* GTFS.sqlite in Resources */,
 				0735E3D315D9D1A100BBEE9E /* Salt Lake City.gpx in Resources */,
 				0748139315E308D700B21829 /* default.png in Resources */,
 				0748139415E308D700B21829 /* default@2x.png in Resources */,
