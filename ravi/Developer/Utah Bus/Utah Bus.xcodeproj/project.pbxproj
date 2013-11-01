@@ -22,7 +22,6 @@
 		0748139515E308D700B21829 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0748139115E308D700B21829 /* icon.png */; };
 		0748139615E308D700B21829 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0748139215E308D700B21829 /* icon@2x.png */; };
 		0748139915E4072300B21829 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0748139815E4072300B21829 /* HelpViewController.m */; };
-		0748139B15E415CD00B21829 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 0748139A15E415CD00B21829 /* help.html */; };
 		074813B715E41E6600B21829 /* closest@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 074813AF15E41E6600B21829 /* closest@2x.png */; };
 		074813B815E41E6600B21829 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 074813B015E41E6600B21829 /* help.png */; };
 		074813B915E41E6600B21829 /* route@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 074813B115E41E6600B21829 /* route@2x.png */; };
@@ -54,8 +53,10 @@
 		07BB7BB115CC740A007A0531 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BB7BB015CC740A007A0531 /* MapKit.framework */; };
 		07BB7BB715CC74FF007A0531 /* UtaFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BB7BB615CC74FF007A0531 /* UtaFetcher.m */; };
 		07BE44E815E8401400E757BF /* timetableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BE44E715E8401400E757BF /* timetableViewController.m */; };
-		4195FE5517E8AA4700E4F317 /* GTFS.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4195FE5417E8AA4700E4F317 /* GTFS.sqlite */; };
 		41A6BA761722117C00C16B4D /* StopListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A6BA741722117C00C16B4D /* StopListTableViewController.m */; };
+		41B7414D18245FAA00B743CC /* RoutePlannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B7414B18245FAA00B743CC /* RoutePlannerViewController.m */; };
+		41B7414F1824601400B743CC /* GTFS.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 41B7414E1824601400B743CC /* GTFS.sqlite */; };
+		41B741511824608E00B743CC /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 41B741501824608E00B743CC /* help.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,7 +83,6 @@
 		0748139215E308D700B21829 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		0748139715E4072300B21829 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
 		0748139815E4072300B21829 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
-		0748139A15E415CD00B21829 /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
 		074813AF15E41E6600B21829 /* closest@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closest@2x.png"; sourceTree = "<group>"; };
 		074813B015E41E6600B21829 /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
 		074813B115E41E6600B21829 /* route@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "route@2x.png"; sourceTree = "<group>"; };
@@ -123,9 +123,12 @@
 		07BB7BB615CC74FF007A0531 /* UtaFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtaFetcher.m; sourceTree = "<group>"; };
 		07BE44E615E8401400E757BF /* timetableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timetableViewController.h; sourceTree = "<group>"; };
 		07BE44E715E8401400E757BF /* timetableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = timetableViewController.m; sourceTree = "<group>"; };
-		4195FE5417E8AA4700E4F317 /* GTFS.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = GTFS.sqlite; sourceTree = "<group>"; };
 		41A6BA731722117C00C16B4D /* StopListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopListTableViewController.h; sourceTree = "<group>"; };
 		41A6BA741722117C00C16B4D /* StopListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopListTableViewController.m; sourceTree = "<group>"; };
+		41B7414B18245FAA00B743CC /* RoutePlannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoutePlannerViewController.m; sourceTree = "<group>"; };
+		41B7414C18245FAA00B743CC /* RoutePlannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutePlannerViewController.h; sourceTree = "<group>"; };
+		41B7414E1824601400B743CC /* GTFS.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = GTFS.sqlite; sourceTree = "<group>"; };
+		41B741501824608E00B743CC /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,7 +195,7 @@
 		07BB7B9715CC73DA007A0531 /* Utah Bus */ = {
 			isa = PBXGroup;
 			children = (
-				4195FE5417E8AA4700E4F317 /* GTFS.sqlite */,
+				41B7414E1824601400B743CC /* GTFS.sqlite */,
 				076737751623EA9B00332ADA /* routeplan.png */,
 				076737761623EA9B00332ADA /* routeplan@2x.png */,
 				073BC80B15EBFFB4002A9519 /* Model.xcdatamodeld */,
@@ -204,7 +207,7 @@
 				074813B415E41E6600B21829 /* closest.png */,
 				074813B515E41E6600B21829 /* route.png */,
 				074813B615E41E6600B21829 /* help@2x.png */,
-				0748139A15E415CD00B21829 /* help.html */,
+				41B741501824608E00B743CC /* help.html */,
 				0748138715E2C9F600B21829 /* Reachability.h */,
 				0748138815E2C9F600B21829 /* Reachability.m */,
 				0735E3D415DA147200BBEE9E /* StopMapViewController.h */,
@@ -229,6 +232,8 @@
 				07BE44E715E8401400E757BF /* timetableViewController.m */,
 				07BB7BA615CC73DA007A0531 /* UTAViewController.h */,
 				07BB7BA715CC73DA007A0531 /* UTAViewController.m */,
+				41B7414B18245FAA00B743CC /* RoutePlannerViewController.m */,
+				41B7414C18245FAA00B743CC /* RoutePlannerViewController.h */,
 				07615BDD15D95328003C691C /* FavoritesTableViewController.h */,
 				07615BDE15D95328003C691C /* FavoritesTableViewController.m */,
 				41A6BA731722117C00C16B4D /* StopListTableViewController.h */,
@@ -313,14 +318,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				07BB7B9C15CC73DA007A0531 /* InfoPlist.strings in Resources */,
+				41B741511824608E00B743CC /* help.html in Resources */,
 				07BB7BA515CC73DA007A0531 /* MainStoryboard.storyboard in Resources */,
-				4195FE5517E8AA4700E4F317 /* GTFS.sqlite in Resources */,
+				41B7414F1824601400B743CC /* GTFS.sqlite in Resources */,
 				0735E3D315D9D1A100BBEE9E /* Salt Lake City.gpx in Resources */,
 				0748139315E308D700B21829 /* default.png in Resources */,
 				0748139415E308D700B21829 /* default@2x.png in Resources */,
 				0748139515E308D700B21829 /* icon.png in Resources */,
 				0748139615E308D700B21829 /* icon@2x.png in Resources */,
-				0748139B15E415CD00B21829 /* help.html in Resources */,
 				074813B715E41E6600B21829 /* closest@2x.png in Resources */,
 				074813B815E41E6600B21829 /* help.png in Resources */,
 				074813B915E41E6600B21829 /* route@2x.png in Resources */,
@@ -354,6 +359,7 @@
 				07BB7BA815CC73DA007A0531 /* UTAViewController.m in Sources */,
 				07BB7BB715CC74FF007A0531 /* UtaFetcher.m in Sources */,
 				0740D84515D027C90075A32C /* MapViewController.m in Sources */,
+				41B7414D18245FAA00B743CC /* RoutePlannerViewController.m in Sources */,
 				0740D84915D053B30075A32C /* LocationAnnotation.m in Sources */,
 				07615BDF15D95328003C691C /* FavoritesTableViewController.m in Sources */,
 				0735E3D015D9CB6400BBEE9E /* UTAStopMonitoringViewController.m in Sources */,
@@ -458,14 +464,14 @@
 		07BB7BAC15CC73DA007A0531 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Utah Bus/Utah Bus-Prefix.pch";
 				INFOPLIST_FILE = "Utah Bus/Utah Bus-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9319B8E5-776A-4A38-8307-ECDE965A38CF";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -475,14 +481,14 @@
 		07BB7BAD15CC73DA007A0531 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Utah Bus/Utah Bus-Prefix.pch";
 				INFOPLIST_FILE = "Utah Bus/Utah Bus-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9319B8E5-776A-4A38-8307-ECDE965A38CF";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

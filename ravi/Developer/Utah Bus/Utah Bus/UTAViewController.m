@@ -136,7 +136,7 @@
     [self.view addSubview:self.autocompleteTableView];
     self.routeName.delegate = self;
     self.infoView.hidden = YES;*/
-    UINavigationController *fnvc = [self.tabBarController.viewControllers objectAtIndex:2];
+    UINavigationController *fnvc = [self.tabBarController.viewControllers objectAtIndex:3];
     FavoritesTableViewController *fvc = (FavoritesTableViewController *)[fnvc topViewController];
     [fvc setRouteDelegate:self];
     
